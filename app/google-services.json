@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486145923152",
+    "project_id": "mealy-8e13d",
+    "storage_bucket": "mealy-8e13d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486145923152:android:8a94e3171070b8f6bc1955",
+        "android_client_info": {
+          "package_name": "com.eat_healthy.tiffin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486145923152-7efse2otnsnjmmdfulaehkv11s33fb2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5QcbQOYFvE4P90wjieonH2QhXPIHF_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486145923152-7efse2otnsnjmmdfulaehkv11s33fb2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

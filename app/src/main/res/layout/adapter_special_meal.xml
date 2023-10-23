@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.SpecialMeal" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="6dp"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivItem"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:foreground="@drawable/gray_gradient"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lauki Ki Sabji"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tcShortDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_text"
+                android:textSize="12sp"
+                android:layout_marginEnd="150dp"
+                android:layout_toEndOf="@+id/ivItem"
+                android:layout_below="@+id/tvItemName"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="10dp"
+                android:visibility="gone"
+                android:textColor="@color/black_54"
+                />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:visibility="visible"
+                android:layout_marginStart="10dp"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/indicator"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circular_solid_background"
+                    android:backgroundTint="@color/colorPrimary"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/isAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="Available"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</layout>
+
+
+
+
+<!--<androidx.cardview.widget.CardView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginHorizontal="10dp"-->
+<!--android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"-->
+<!--    >-->
+<!--<RelativeLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:background="@color/white"-->
+<!--    >-->
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/ivItem"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        app:shapeAppearanceOverlay="@style/roundedCorners"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        app:srcCompat="@drawable/beans_and_tomato_stew"-->
+<!--        />-->
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvItemName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Lauki Ki Sabji"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_toEndOf="@+id/ivItem"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        />-->
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tcShortDesc"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/dummy_text"-->
+<!--        android:textSize="12sp"-->
+<!--        android:layout_marginEnd="150dp"-->
+<!--        android:layout_toEndOf="@+id/ivItem"-->
+<!--        android:layout_below="@+id/tvItemName"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:textColor="@color/black_54"-->
+<!--        />-->
+<!--    <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="0dp"-->
+<!--        android:minWidth="0dp"-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:buttonTint="@color/greenNight"-->
+<!--        />-->
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_toEndOf="@+id/ivItem"-->
+<!--        android:background="@color/light_view_grey"-->
+<!--        android:layout_below="@+id/ivItem"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        />-->
+<!--</RelativeLayout>-->
+<!--</androidx.cardview.widget.CardView>-->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="25dp"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+<androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/tvInfo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/text_grey"
+    tools:text="1. You are subscribed for monthly"
+    />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/light_view_grey"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

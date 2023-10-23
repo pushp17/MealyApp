@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/windowBackground"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMealSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary_3"
+        android:orientation="vertical"
+        android:paddingEnd="5dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:backgroundTint="@color/lightGreen"
+            >
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/clock"
+                android:layout_gravity="center_vertical"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:visibility="visible"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
+                android:text="Todays meal is not available , please order next meal  "
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:text="Lunch Order - 12:01 AM - 11:30 AM"
+            android:visibility="gone"
+            android:textSize="13sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:text="Dinner Order- 11:30 AM - 7: 00 PM"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            android:textSize="13sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSelectMeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/cvMealSelection"
+        />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/flCartItem"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="23"
+        android:textSize="18sp"
+        app:icon="@drawable/shopping_cart"
+        app:layout_anchorGravity="bottom|right|end"/>
+</RelativeLayout>

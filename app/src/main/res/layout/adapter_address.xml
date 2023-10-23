@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.UserAddress"
+            />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:onClick="@{()-> itemClickListener.onClickItem(position,item)}"
+    >
+
+
+    <CheckBox
+        android:id="@+id/rbAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:buttonTint="@color/colorPrimary_3"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:onClick="@{()-> itemClickListener.onClickItem(position,item)}"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/rbAddress">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAddress"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="3dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/location" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/ivAddress"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Baghi , Garhwa"
+            android:textColor="@color/black_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLocality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvArea"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/ivAddress"
+            android:background="@color/transparent"
+            android:hint="Flat No / Road No / Gully no"
+            android:textColor="@color/text_grey_2"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/strip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvLocality"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/ivAddress"
+            android:background="@drawable/oval_bg"
+            android:backgroundTint="#f1eafb"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="3dp"
+            android:text="Lunch"
+            android:textColor="#7d57c6"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/address"
+        android:layout_marginTop="15dp"
+        android:background="@color/lightgray" />
+</RelativeLayout>
+</layout>

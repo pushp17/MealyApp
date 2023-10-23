@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="7dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSubscriptionStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:paddingVertical="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="RPRK LAN TECHNOLOGY PRIVATE LIMITED"
+            android:textSize="15sp"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="7dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:paddingVertical="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Email ID : mealy1709@gmail.com"
+            android:textSize="15sp"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="7dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:paddingVertical="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Call : 9113584599"
+            android:textSize="15sp"
+            />
+    </androidx.cardview.widget.CardView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

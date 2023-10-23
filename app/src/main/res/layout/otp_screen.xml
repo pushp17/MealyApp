@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/parentrelative"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<include
+    layout="@layout/toolbar"
+    />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/mobileverificationimage"
+
+        />
+
+    <TextView
+        android:id="@+id/verifyyourno"
+        android:layout_below="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OTP Verification"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+
+        android:layout_centerHorizontal="true"
+        />
+
+<!--    <TextView-->
+<!--        android:id="@+id/verification_detail_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/verifyyourno"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginHorizontal="40dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:text="OTP is 5659 untill we start our services"-->
+<!--        android:textSize="14sp" />-->
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_below="@+id/verification_detail_text"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <com.chaos.view.PinView
+            android:id="@+id/pinviewotp"
+            android:layout_width="wrap_content"
+            app:itemCount="4"
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:hint="Hint."
+            android:inputType="number"
+            android:textColor="@color/black"
+            style="@style/PinWidget.PinView"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cursorColor="@color/colorPrimary"
+            app:cursorWidth="2dp"
+            app:itemHeight="48dp"
+            app:itemRadius="4dp"
+            app:itemSpacing="0dp"
+            app:itemWidth="48dp"
+            app:lineColor="@color/colorPrimary_1"
+            app:lineWidth="2dp"
+            app:viewType="rectangle" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnresend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear"
+        android:layout_marginTop="25dp"
+        android:background="@color/transparent"
+        android:clickable="true"
+        android:foregroundGravity="center_horizontal"
+        android:gravity="center"
+        android:onClick="resend"
+        android:text="Resend OTP"
+        android:textColor="@color/colorPrimary_1"
+        android:textSize="18dp"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvProceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnresend"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/little_rounded_corner"
+        android:backgroundTint="@color/green_1"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp"
+        android:text="PROCEED"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

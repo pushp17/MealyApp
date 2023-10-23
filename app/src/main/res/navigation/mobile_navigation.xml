@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.eat_healthy.tiffin.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_navigation_home_to_currentLocationMapFragment"
+            app:destination="@id/currentLocationMapFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_home_to_foodSelectionFragment"
+            app:destination="@id/foodSelectionFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.eat_healthy.tiffin.ui.AccountFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_navigation_account_to_privacyAndTermsConditionFragment"
+            app:destination="@id/privacyAndTermsConditionFragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_completeAddressFragment"
+            app:destination="@id/completeAddressFragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_myOrderHisoryFragment"
+            app:destination="@id/myOrderHisoryFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_account_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_account_to_contactUsFragment"
+            app:destination="@id/contactUsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/currentLocationMapFragment"
+        android:name="com.eat_healthy.tiffin.ui.AvailableLocationFragment"
+        android:label="CurrentLocationMapFragment" >
+        <action
+            android:id="@+id/action_currentLocationMapFragment_to_foodSelectionFragment"
+            app:destination="@id/foodSelectionFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.eat_healthy.tiffin.ui.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_otpFragment"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/otpFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.eat_healthy.tiffin.ui.OtpFragment"
+        android:label="OtpFragment" >
+        <action
+            android:id="@+id/action_otpFragment_to_completeAddressFragment"
+            app:destination="@id/completeAddressFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/foodSelectionFragment"
+        android:name="com.eat_healthy.tiffin.ui.FoodSelectionFragment"
+        android:label="FoodSelectionFragment" >
+        <action
+            android:id="@+id/action_foodSelectionFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_foodSelectionFragment_to_completeAddressFragment"
+            app:destination="@id/completeAddressFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_foodSelectionFragment_to_cartListItemsBottomSheet"
+            app:destination="@id/cartListItemsBottomSheet"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/completeAddressFragment"
+        android:name="com.eat_healthy.tiffin.ui.CompleteAddressFragment"
+        android:label="CompleteAddressFragment" >
+        <action
+            android:id="@+id/action_completeAddressFragment_to_orderSummaryFragment"
+            app:destination="@id/orderSummaryFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_completeAddressFragment_to_addAddressBottomSheet"
+            app:destination="@id/addAddressBottomSheet"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSummaryFragment"
+        android:name="com.eat_healthy.tiffin.ui.OrderSummaryFragment"
+        android:label="OrderSummaryFragment" >
+        <action
+            android:id="@+id/action_orderSummaryFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/monthlyFoodSelectionFragment"
+        android:name="com.eat_healthy.tiffin.ui.MonthlyFoodSelectionFragment"
+        android:label="Monthly" >
+        <action
+            android:id="@+id/action_monthlyFoodSelectionFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_monthlyFoodSelectionFragment_to_completeAddressFragment"
+            app:destination="@id/completeAddressFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <dialog
+        android:id="@+id/addAddressBottomSheet"
+        android:name="com.eat_healthy.tiffin.ui.AddAddressBottomSheet"
+        android:label="AddAddressBottomSheet" />
+    <fragment
+        android:id="@+id/privacyAndTermsConditionFragment"
+        android:name="com.eat_healthy.tiffin.ui.PrivacyAndTermsConditionFragment"
+        android:label="PrivacyAndTermsConditionFragment" />
+    <dialog
+        android:id="@+id/cartListItemsBottomSheet"
+        android:name="com.eat_healthy.tiffin.ui.CartListItemsBottomSheet"
+        android:label="CartListItemsBottomSheet" />
+    <fragment
+        android:id="@+id/myOrderHisoryFragment"
+        android:name="com.eat_healthy.tiffin.ui.MyOrderHisoryFragment"
+        android:label="MyOrderHisoryFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.eat_healthy.tiffin.ui.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_profileFragment_to_monthlyFoodSelectionFragment"
+            app:destination="@id/monthlyFoodSelectionFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.eat_healthy.tiffin.ui.ContactUsFragment"
+        android:label="ContactUsFragment" />
+</navigation>

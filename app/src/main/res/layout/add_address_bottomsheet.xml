@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+<androidx.appcompat.widget.AppCompatTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add New Address"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="20dp"
+    android:textColor="@color/black_text"
+    />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp">
+        <CheckBox
+            android:id="@+id/cbLunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Lunch Addres" />
+
+        <CheckBox
+            android:id="@+id/cbDinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Dinner Addres" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <Spinner
+        android:id="@+id/spinlocality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="10dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="38dp"
+        android:background="@color/lightgray"
+        />
+
+    <EditText
+        android:id="@+id/etStreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent"
+        android:hint="@string/flat_no_road_no_gully_no"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/lightgray" />
+
+    <EditText
+        android:id="@+id/etLandmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent"
+        android:hint="@string/landmark_optional"
+        android:textColor="@color/text_grey"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/lightgray" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvProceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/little_rounded_corner"
+        android:backgroundTint="@color/green_1"
+        android:paddingHorizontal="39dp"
+        android:paddingVertical="5dp"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="visible" />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.Button" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:layout_marginVertical="20dp"
+    android:background="@drawable/rounded_corner"
+    android:backgroundTint="@color/colorPrimary"
+    android:layout_marginHorizontal="10dp"
+    >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llAddInCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@+id/llNext"
+        android:gravity="center"
+        android:onClick="@{() -> itemClickListener.onClickItem(position,item)}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddInCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="ADD IN CART"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_toStartOf="@+id/llNext"
+        android:layout_marginEnd="5dp"
+        android:background="@color/light_gray"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llNext"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:onClick="@{() ->  itemClickListener.onClickItem(0,item)}"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:text="2 ITEMS | 50 Rs" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/next_arrow"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

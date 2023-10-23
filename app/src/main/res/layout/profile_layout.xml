@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/oneside_corner"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/user" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="-30dp"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="5dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/tvUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Rajnikant pandey"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="9113584599"
+                android:textColor="@color/black_text"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/indicator"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circular_solid_background" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMonthlyActiveUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/active_monthly_user"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llMonthlyuser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="#ecf9ef"
+            app:cardCornerRadius="7dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubscriptionStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:paddingVertical="20dp"
+                android:text="Subcription Start Date : 12/12/2019"
+                android:textSize="12sp"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#f2f5fe"
+            app:cardCornerRadius="7dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubscriptionEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:paddingVertical="20dp"
+                android:text="Subcription End Date : 12/12/2019"
+                android:textSize="12sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#fcf0ff"
+            app:cardCornerRadius="7dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubscriptionPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:paddingVertical="20dp"
+                android:text="Subcription Price :Rs 2000"
+                android:textSize="12sp"
+
+                />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvRenewSubcription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="40dp"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="7dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:paddingVertical="15dp"
+                android:textColor="@color/white"
+                android:text="Renew Subcription"
+                android:textSize="15sp"
+                />
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

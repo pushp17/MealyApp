@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/empty_textview"
+        android:text="Seems Like You Have Not Ordered Anything Yet"
+        android:textSize="16sp"
+        android:textColor="@color/text_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/errorMsg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/empty_screen"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivNewDeliveryimage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/newdeliveryimage"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/tvHeader"
+        android:text="MY ORDERS"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/ivNewDeliveryimage"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tvHeader"
+        android:layout_marginBottom="30dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.ItemsInCart"
+            />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lauki Ki Sabji"
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:layout_centerVertical="true"
+        android:paddingVertical="13dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValue2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:layout_below="@+id/tvItemName"
+        tools:text="10"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/view"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/tvValue2"
+        android:background="@color/light_view_grey" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivClose"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:padding="8dp"
+        app:srcCompat="@drawable/close"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:onClick="@{()-> itemClickListener.onClickItem(position,item)}"
+        />
+</RelativeLayout>
+</layout>

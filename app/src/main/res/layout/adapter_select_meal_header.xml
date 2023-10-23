@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.MealCategoryHeader" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/layoutPlan"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+    android:background="@{item.selected ? @drawable/bg_rectangle_filled : @drawable/bg_rectangle_partially_filled}"
+  >
+        <ImageView
+            android:id="@+id/ivSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            android:visibility="visible"
+            android:background="@{item.selected ? @drawable/ic_selected : @drawable/ic_unselected}"
+            />
+        <TextView
+            android:id="@+id/tvMealCategoryHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Special"
+            android:textSize="18sp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:text="Today's Special" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

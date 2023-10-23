@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange_colour">#e7823a</color>
+    <color name="yellow_1"> #ccff01</color>
+    <color name="brinjal_1">#8e87e0</color>
+
+    <color name="colorPrimary_2">#1f1f1f</color>
+    <color name="colorPrimary_3">#164464</color>
+    <color name="colorPrimary_1">#054040</color>
+    <color name="colorPrimary">#DF4F4F</color>
+    <color name="referalBackgroundColour"> #0098b2</color>
+
+    <color name="colorPrimary_4">#DF724F</color>
+    <color name="light_blue_1">#e2f0f9</color>
+
+    <color name="colorPrimaryLight">#f9aaa3</color>
+    <color name="black_03">#08000000</color>
+    <color name="black_06">#0F000000</color>
+    <color name="black_10">#1A000000</color>
+    <color name="black_17">#2B000000</color>
+    <color name="black_54">#8A000000</color>
+    <color name="black_80">#CC000000</color>
+    <color name="black_87">#DE000000</color>
+    <color name="white_06">#0FFFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
+    <color name="white_17">#2BFFFFFF</color>
+    <color name="white_54">#8AFFFFFF</color>
+    <color name="white_87">#DEFFFFFF</color>
+
+    <!-- Default & Night Colors -->
+
+    <color name="lightGreen">#e5fbe5</color>
+    <color name="red">#FFD0011B</color>
+    <color name="redNight">#FFFF6B61</color>
+    <color name="blue">#FF0074B1</color>
+    <color name="blueNight">#FF81D3FF</color>
+    <color name="brown">#FFA55900</color>
+    <color name="brownNight">#FFD97500</color>
+    <color name="green">#FF417505</color>
+    <color name="greenNight">#FF00B48A</color>
+    <color name="windowBackground">#FFECF0F1</color>
+    <color name="heroPlanBackground">#FFFBF0</color>
+    <color name="windowBackgroundNight">#FF303030</color>
+    <color name="colorPrimaryNight">#212121</color>
+    <color name="colorPrimaryDark">#009270</color>
+    <color name="colorPrimaryDarkNight">#164464</color>
+    <color name="colorAccent">#00B48A</color>
+    <color name="colorAccentNight">#00B48A</color>
+    <color name="itemBackground">#FAFAFA</color>
+    <color name="itemBackgroundNight">#424242</color>
+    <color name="itemDividerColor">@color/windowBackground</color>
+    <color name="itemDividerColorNight">@color/windowBackgroundNight</color>
+    <color name="tableHeaders">#DAF0EB</color>
+    <color name="tableHeadersNight">#363636</color>
+    <color name="group_header">#CFE0DB</color>
+    <color name="group_headerNight">#323232</color>
+    <color name="twt_counter">#A6B6C1</color>
+    <color name="notiHome">#DEE88565</color>
+    <color name="notiHomeNight">#DEE88565</color>
+    <color name="darkYellow">#CC9900</color>
+    <color name="status_header">#e2f0f9</color>
+    <color name="status_header_night">#424746</color>
+
+    <color name="progressBg">#909090</color>
+    <color name="progress">#ff3a30</color>
+
+    <!-- Bottom bar color code -->
+    <color name="bb_background">@color/itemBackground</color>
+    <color name="bb_backgroundNight">@color/itemBackgroundNight</color>
+    <color name="bb_active">@color/black</color>
+    <color name="bb_activeNight">@color/white</color>
+    <color name="bb_inactive">@color/black_54</color>
+    <color name="bb_inactiveNight">#8C8E8F</color>
+    <color name="bb_inActiveBottomBarItemColor">#747474</color>
+
+    <!-- Customised Colors -->
+    <color name="zerorun">#9FA4A8</color>
+    <color name="nonzerorun">#54B199</color>
+    <color name="fourrun">#2FBBDB</color>
+    <color name="sixrun">#D396EB</color>
+    <color name="extrarun">#BDA789</color>
+    <color name="light_dull_white">@color/white_87</color>
+    <color name="dark_dull_white">@color/white_54</color>
+    <color name="leanBackDivider">@color/white_10</color>
+    <color name="tweetBackground">#1F419BF9</color>
+    <color name="transiStatusBarColor">@color/black_10</color>
+    <color name="comm_snippet_delay">#263372CB</color>
+    <color name="comm_snippet_rain_delay">#26E59107</color>
+    <color name="comm_snippet_text_color">#CE9538</color>
+    <color name="comm_snippet_text_background">#804A4A4A</color>
+    <color name="comm_snippet_media_background">#ECEBEB</color>
+
+    <color name="live_icon_bg">#EF303B</color>
+    <color name="playlist_background_color">#80000000</color>
+    <!--<color name="score_card_batting">#EEF9F0</color>-->
+
+    <color name="banner_ad_border">#ececec</color>
+    <color name="banner_ad_border_night">#202020</color>
+
+    <color name="bottom_bar_inactive_item_color">#747474</color>
+
+    <color name="bg_offer">#FFD361</color>
+
+    <color name="sky_grey">#AAAAAA</color>
+    <color name="orange">#ffff8000</color>
+    <color name="gray">#ff808080</color>
+    <color name="lightgray">#D3D3D3</color>
+    <color name="lightgray_1">#a7a7a7</color>
+    <color name="darkgray">#3F3F3F</color>
+    <color name="almostwhite">#F5F5F5</color>
+    <color name="button">#ff3071b8</color>
+    <color name="cancel_button">#ff30a8b8</color>
+    <color name="info_bg_color">#ffe4e2e2</color>
+    <color name="info_text">#ff3071B8</color>
+    <color name="ecg_grid1">#ffFAD2F0</color>
+    <color name="ecg_grid2">#ffFFC0CB</color>
+    <color name="ecg_grid3">#ffFF7A7A</color>
+    <color name="bp_N">#ff6FBB5E</color>
+    <color name="bp_1">#ffFFCE37</color>
+    <color name="bp_2">#ffEB9C0B</color>
+    <color name="bp_3">#ffDC464E</color>
+    <color name="bp_sys">#ff9e2124</color>
+    <color name="bp_dia">#ffc4851a</color>
+    <color name="title">#717271</color>
+    <color name="high_red">#f95965</color>
+    <color name="graph_line_red">#FA5E97</color>
+    <color name="dark_purple">#603DB1</color>
+    <color name="bottom_nav_grey">#71828C</color>
+    <color name="black_heading_1">#313641</color>
+    <color name="black_heading_2">#4F616C</color>
+    <color name="box_grey">#E5E5E5</color>
+    <color name="box_grey_2">#E0E6EC</color>
+    <color name="box_grey_border">#E6ECF1</color>
+    <color name="edittext_background">#F6F6F6</color>
+    <color name="light_purple_background">#EAEBFD</color>
+    <color name="day_week_tabcolor">#E6E4F0</color>
+    <color name="black_text">#26324F</color>
+    <color name="light_green">#15E0A9</color>
+    <color name="hint_grey">#647077</color>
+    <color name="placeholder_grey">#B2BFC6</color>
+    <color name="dark_transparent">#99000000</color>
+    <color name="light_transparent">#16000000</color>
+    <color name="active_green">#3BC98D</color>
+    <color name="high_green">#32A675</color>
+    <color name="disconnect_red">#FC4551</color>
+    <color name="transparent">#66FFFFFF</color>
+    <color name="transparent_1">#00000000</color>
+    <color name="transparent_full">#00FFFFFF</color>
+    <color name="transparent_grey">#77E9E8F3</color>
+    <color name="goal_color">#FEA600</color>
+    <color name="graph_pink">#FC45F5</color>
+    <color name="text_grey">#616568</color>
+    <color name="text_grey_1">#cdced1</color>
+    <color name="text_grey_2">#c3c8cc</color>
+
+    <color name="warning_pink">#FF7C8D</color>
+    <color name="thin_blue">#00E0FF</color>
+    <color name="normal_green">#36D647</color>
+    <color name="green_1">#1fb31a</color>
+    <color name="owt_orange">#FF8D52</color>
+    <color name="bpm_pink">#FF5794</color>
+    <color name="food_green">#9CE265</color>
+    <color name="ex_rest_green">#6CCE1F</color>
+    <color name="ex_warmup_blue">#221FCE</color>
+    <color name="ex_burn_yellow">#FFD706</color>
+    <color name="ex_aerobic_pink">#F47BE1</color>
+    <color name="ex_cardio_teal">#A2C6FD</color>
+    <color name="ex_peak_orange">#F95A64</color>
+    <!--    Bp Colors-->
+    <color name="low_bp_blue">#0D589D</color>
+    <color name="normal_bp_green">#3BC98D</color>
+    <color name="elevated_bp_orange">#FF8D52</color>
+    <color name="moderate_bp_dark_orange">#E2753C</color>
+    <color name="high_bp_red">#FC4551</color>
+    <color name="severe_bp_dark_red">#DE3843</color>
+    <color name="low_blue">#1DBDD2</color>
+    <color name="optimal_green">#38C98D</color>
+    <color name="colorHomeFragCardView">#FFFFFF</color>
+    <color name="cardview_line">#E9EAF3</color>
+    <color name="home_light_grey">#616568</color>
+    <color name="seekbar_value">#313641</color>
+    <color name="calendar_day">#647077</color>
+    <color name="light_view_grey">#EFEEFF</color>
+    <color name="light_gray">#EFEEFF</color>
+    <color name="light_orange">#F2984A</color>
+    <color name="light_pink">#FF6E8F</color>
+    <color name="light_blue">#48CEFF</color>
+    <color name="home_steps_progress">#7665E0</color>
+    <color name="bg_steps_progress">#8474E3</color>
+    <color name="awake_blue">#C9E5FF</color>
+    <color name="rem_blue">#84C4FF</color>
+    <color name="light_sleep_blue">#4EAAFF</color>
+    <color name="deep_sleep_blue">#2373BC</color>
+
+
+    <color name="float_transparent">#00000000</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="blue_btn_bg_color">#AEDEF4</color>
+    <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+    <color name="red_btn_bg_color">#DD6B55</color>
+    <color name="red_btn_bg_pressed_color">#CD5B55</color>
+    <color name="error_stroke_color">#F27474</color>
+    <color name="success_stroke_color">#A5DC86</color>
+    <color name="trans_success_stroke_color">#33A5DC86</color>
+    <color name="warning_stroke_color">#F8BB86</color>
+    <color name="text_color">#575757</color>
+    <color name="material_blue_grey_80">#ff37474f</color>
+    <color name="material_blue_grey_90">#ff263238</color>
+    <color name="material_blue_grey_95">#ff21272b</color>
+    <color name="material_deep_teal_20">#ff80cbc4</color>
+    <color name="material_deep_teal_50">#ff009688</color>
+</resources>
