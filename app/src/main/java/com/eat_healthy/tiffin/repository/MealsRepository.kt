@@ -10,10 +10,10 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class MealsRepository
     @Inject
-    constructor(val mealsDataSource: MealsDataSource) {
-        suspend fun getMealsData(): Flow<DataState<MealsApiRespone?>> = flow {
+    constructor(private val mealsDataSource: MealsDataSource) {
+        suspend fun getMealsData(name:String?): Flow<DataState<MealsApiRespone?>> = flow {
             emit(DataState.Loading)
-            val response= mealsDataSource.getMealsApiResponse()
+            val response= mealsDataSource.getMealsApiResponse(name)
             when (response.statusCode) {
                 200 -> emit(DataState.Success(response.data, response.statusCode))
                 else -> emit(DataState.Error(response.statusCode, null,response.errorMsg))

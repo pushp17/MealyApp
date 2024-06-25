@@ -3,33 +3,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/windowBackground"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tvContinue">
+        android:layout_above="@+id/rlPayment"
+        android:layout_marginBottom="5dp"
+        >
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <include layout="@layout/toolbar" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Items Added" />
+                android:paddingBottom="10dp"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:srcCompat="@drawable/back"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Summary"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llDiscount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/light_green_with_rounded_background"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    />
+<!--                app:srcCompat="@drawable/discount"-->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹100 saved!"
+                    android:textSize="15sp"
+                    android:textColor="@color/standard_green"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On Referal Code"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/standard_green"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/white"
                 >
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -37,25 +93,117 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="7dp"
                     android:layout_marginVertical="10dp"
+                    android:paddingVertical="10dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llAddress1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:visibility="visible"
+                            android:layout_marginEnd="7dp"
+                            app:srcCompat="@drawable/location" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAddress1Heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:text="address | "
+                            android:textSize="12sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvFirstAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:fontFamily="@font/roboto_regular"
+                            android:lineSpacingExtra="3dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="@color/black_text"
+                            android:textSize="14sp"
+                            android:text=" Baghi , Soh , Hasker , Garhwa Baghi , Soh , Hasker , Garhwa Baghi , Soh , Hasker , Garhwa" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/light_view_grey"
+                        android:visibility="gone"
+                        />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llAddress2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:visibility="gone"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:visibility="invisible"
+                            app:srcCompat="@drawable/location" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAddress2Heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dinner | "
+                            android:textSize="12sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvSecondAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:lineSpacingExtra="3dp"
+                            android:paddingBottom="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:textColor="@color/black_text"
+                            android:textSize="14sp"
+                            android:text=" Baghi , Soh , Hasker , Garhwa Baghi , Soh , Hasker , Garhwa" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/white"
+                >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="7dp"
+                    android:layout_marginVertical="10dp"
+                    android:paddingVertical="10dp"
                     android:orientation="vertical">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:srcCompat="@drawable/meal" />
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvMealPlan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your Weekely Meal Plan "
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Your Meal Plan"
                         android:textColor="@color/black_text"
-                        android:visibility="gone"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_marginStart="7dp"
-                         />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
                     <RelativeLayout
                         android:id="@+id/rlItem1"
@@ -69,9 +217,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:layout_toStartOf="@+id/tvValue1"
-                            android:fontFamily="@font/montserrat_alternates_medium"
                             android:text="Regular Veg (Rs 50)"
-                            android:textColor="@color/black_text"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/text_color"
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -81,7 +229,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_weight="1"
                             android:text="25"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/black"
                             android:textSize="15sp" />
                     </RelativeLayout>
 
@@ -97,9 +245,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:layout_toStartOf="@+id/tvValue2"
-                            android:fontFamily="@font/montserrat_alternates_medium"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Veg Special (Rs 80)"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/text_color"
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -108,7 +256,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="10"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/black"
                             android:textSize="15sp" />
                     </RelativeLayout>
 
@@ -124,9 +272,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
                             android:layout_toStartOf="@+id/tvValue3"
-                            android:fontFamily="@font/montserrat_alternates_medium"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Regular Veg (Rs 50)"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/text_color"
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -135,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="5"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/black"
                             android:textSize="15sp" />
                     </RelativeLayout>
 
@@ -154,24 +302,20 @@
                         android:layout_marginTop="15dp"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:textStyle="bold"
                         android:text="Total meals 60"
+                        android:fontFamily="@font/roboto_regular"
                         android:textColor="@color/black_text"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Bill Summary" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
+                android:background="@color/white"
                 >
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -180,11 +324,6 @@
                     android:layout_marginHorizontal="7dp"
                     android:layout_marginVertical="10dp"
                     android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:srcCompat="@drawable/invoice" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -195,10 +334,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2.5"
-                            android:fontFamily="@font/montserrat_alternates_medium"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Subtotal "
                             android:textColor="@color/black_text"
-                            android:textSize="16sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -208,7 +347,7 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="Rs 3000"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/black"
                             android:textSize="15sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -221,10 +360,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:fontFamily="@font/montserrat_alternates_medium"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="GST"
-                            android:textColor="@color/black_text"
-                            android:textSize="15sp" />
+                            android:textColor="@color/text_gray"
+                            android:textSize="14sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvGstPrice"
@@ -233,7 +372,7 @@
                             android:layout_weight="1"
                             android:gravity="end"
                             android:text="Rs 150"
-                            android:textColor="@color/black_text"
+                            android:textColor="@color/black"
                             android:textSize="15sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -246,10 +385,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.2"
-                            android:fontFamily="@font/montserrat_alternates_medium"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Delivery charge"
-                            android:textColor="@color/black_text"
-                            android:textSize="15sp" />
+                            android:textColor="@color/text_gray"
+                            android:textSize="14sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvDeliveryCharge"
@@ -259,7 +398,34 @@
                             android:gravity="end"
                             android:textColor="@color/black_text"
                             android:textSize="15sp"
-                            tools:text="Rs 100/month" />
+                            android:text="Rs 100/month" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llReferalDiscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginTop="12dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Referal Discount🎉"
+                            android:textColor="@color/text_gray"
+                            android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvReferalDiscount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:textColor="@color/black_text"
+                            android:textSize="15sp"
+                            android:text="Rs 10" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <View
@@ -267,106 +433,93 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="15dp"
                         android:background="@color/light_view_grey" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvGrandTotalPrice"
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginTop="15dp"
                         android:layout_weight="1"
-                        android:gravity="end"
+                        android:gravity="end">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/black_text"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            android:text="60" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGrandTotalPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
                         android:textColor="@color/black_text"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        tools:text="Grand Total  Rs 60" />
+                        android:layout_marginStart="7dp"
+                        android:text="Rs 60" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Address" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                >
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="7dp"
-                    android:layout_marginVertical="10dp"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:srcCompat="@drawable/location" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvAddress1Heading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Lunch Address "
-                        android:textSize="12sp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvFirstAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:paddingBottom="5dp"
-                        android:lineSpacingExtra="3dp"
-                        android:fontFamily="@font/montserrat_alternates_medium"
-                        android:textColor="@color/black_text"
-                        android:textSize="14sp"
-                        tools:text="Baghi , Soh , Hasker , Garhwa" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvAddress2Heading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Dinner Address "
-                        android:textSize="12sp"
-                        android:visibility="gone" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvSecondAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:paddingBottom="5dp"
-                        android:lineSpacingExtra="3dp"
-                        android:fontFamily="@font/montserrat_alternates_medium"
-                        android:textColor="@color/black_text"
-                        android:textSize="14sp"
-                        android:visibility="gone"
-                        tools:text="Township , BNP , Garhwa" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvContinue"
+    <RelativeLayout
+        android:id="@+id/rlPayment"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/colorPrimary"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:text="Pay On Delivery"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalGrandPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs 60"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black_text"
+            android:textStyle="bold"
+
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvViewOrderDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Summary"
+            android:textSize="14sp"
+            android:layout_below="@+id/tvTotalGrandPrice"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/standard_green"
+            android:textStyle="bold"
+            />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/standard_green"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="55dp"
+            android:text="Pay On Delivery"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>

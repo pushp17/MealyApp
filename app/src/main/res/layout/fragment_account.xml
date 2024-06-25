@@ -21,11 +21,36 @@
         android:layout_height="25dp"
         app:srcCompat="@drawable/user"
         />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/my_profile"
+        android:layout_marginStart="10dp"
+        />
+  </androidx.appcompat.widget.LinearLayoutCompat>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/lightgray"
+      />
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/ll_suggestion"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingVertical="25dp"
+      android:layout_marginStart="10dp"
+      >
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/feedback_1"
+        />
   <androidx.appcompat.widget.AppCompatTextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center_vertical"
-      android:text="@string/my_profile"
+      android:text="@string/feedback"
       android:layout_marginStart="10dp"
       />
   </androidx.appcompat.widget.LinearLayoutCompat>
@@ -34,7 +59,60 @@
       android:layout_height="1dp"
       android:background="@color/lightgray"
       />
-
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/ll_order"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingVertical="25dp"
+      android:layout_marginStart="10dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/my_order"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMyOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="My Orders"
+        android:layout_marginStart="10dp"
+        />
+  </androidx.appcompat.widget.LinearLayoutCompat>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/lightgray"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/lightgray"
+      />
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/ll_monthly"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingVertical="25dp"
+      android:layout_marginStart="10dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/ic_dashboard_black_24dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Monthly Subscription"
+        android:layout_marginStart="10dp"
+        />
+  </androidx.appcompat.widget.LinearLayoutCompat>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/lightgray"
+      />
   <androidx.appcompat.widget.LinearLayoutCompat
       android:id="@+id/ll_address"
       android:layout_width="match_parent"
@@ -107,26 +185,6 @@
       android:layout_height="1dp"
       android:background="@color/lightgray"
       />
-  <androidx.appcompat.widget.LinearLayoutCompat
-      android:id="@+id/ll_order"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:paddingVertical="25dp"
-      android:layout_marginStart="10dp">
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:srcCompat="@drawable/my_order"
-        />
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMyOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="My Orders"
-        android:layout_marginStart="10dp"
-        />
-  </androidx.appcompat.widget.LinearLayoutCompat>
   <View
       android:layout_width="match_parent"
       android:layout_height="1dp"

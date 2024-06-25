@@ -12,7 +12,7 @@ import com.eat_healthy.tiffin.genericFiles.ListItem
 import com.eat_healthy.tiffin.models.WeekelyMealType
 import com.eat_healthy.tiffin.utils.AppUtils.rsAppendedValue
 import com.eat_healthy.tiffin.utils.AppUtils.rsAppendedValueWithRs
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils
+import com.eat_healthy.tiffin.utils.DateAndTimeUtils
 import com.eat_healthy.tiffin.viewmodels.SharedViewModel
 import com.eat_healthy.tiffin.viewmodels.MonthlyFoodSelectionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,9 +54,9 @@ class WeeklyMealTypePreferenceFragment : ListViewFragment<WeeklyMealTypePreferen
                 viewModel.subscriptionEndDate!!
             )
         } else {
-            viewModel.subcriptionStartDate = DataAndTimeUtils.getCurrentDate()
+            viewModel.subcriptionStartDate = DateAndTimeUtils.getCurrentDate()
             viewModel.subscriptionEndDate =
-                DataAndTimeUtils.getSubscriptionEndDate(viewModel.subcriptionStartDate)
+                DateAndTimeUtils.getSubscriptionEndDate(viewModel.subcriptionStartDate)
             viewModel.weekdaysInUpcomingAndPastWeeks(
                 viewModel.subcriptionStartDate!!,
                 viewModel.subscriptionEndDate!!

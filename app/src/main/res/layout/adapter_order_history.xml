@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.SingleMealUserOrderHistory"
+            />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="orderDetail"
+            type="String" />
+        <variable
+            name="deliverySlot"
+            type="String" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
@@ -11,29 +29,40 @@
     android:layout_marginBottom="30dp"
     app:cardCornerRadius="3dp"
     app:cardElevation="12dp">
-    <RelativeLayout
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/llOrderPrice"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/indicator"
-            android:layout_width="7dp"
-            android:layout_height="7dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/circular_solid_background"
-            />
+            >
+            <TextView
+                android:id="@+id/tvAmountPaid"
+                android:layout_toEndOf="@+id/tvAmountPaidHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Rs 200"
+                android:layout_below="@+id/orderDate"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/roboto_regular"
+                />
             <TextView
                 android:id="@+id/tvOrderNoHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order no. "
-                android:textSize="17sp"
+                android:text=",   Order no. "
+                android:textSize="15sp"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
                 />
             <TextView
@@ -42,19 +71,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="#542387"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
                 />
-
+        </LinearLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tvOrderDateHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order date - "
-                android:layout_below="@+id/order_no"
+                android:layout_below="@+id/llOrderPrice"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/sky_grey"
@@ -62,39 +94,93 @@
                 />
             <TextView
                 android:id="@+id/orderDate"
-                android:layout_toEndOf="@+id/tvOrderDateHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/order_no"
+                android:layout_below="@+id/llOrderPrice"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/sky_grey"
                 android:fontFamily="@font/roboto_regular"
                 tools:text="28 may,2018"
                 />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <LinearLayout
+            android:id="@+id/llTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            >
         <TextView
-            android:id="@+id/tvAmountPaidHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amount paid - "
-            android:layout_below="@+id/orderDate"
-            android:layout_marginTop="5dp"
+            android:text="Order Time - "
             android:layout_marginStart="5dp"
             android:textColor="@color/sky_grey"
             android:fontFamily="@font/roboto_regular"
             />
-        <TextView
-            android:id="@+id/tvAmountPaid"
-            android:layout_toEndOf="@+id/tvAmountPaidHeader"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvOrderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7:40 AM"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/sky_grey"
+                android:fontFamily="@font/roboto_regular"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llEstimatedDeliveryTime"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Rs 200"
-            android:layout_below="@+id/orderDate"
             android:layout_marginTop="5dp"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Delivery - "
+                android:layout_marginStart="5dp"
+                android:textColor="@color/sky_grey"
+                android:fontFamily="@font/roboto_regular"
+                />
+            <TextView
+                android:id="@+id/estimatedDeliveryTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7:40 AM - 1:00 PM"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/sky_grey"
+                android:fontFamily="@font/roboto_regular"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="See Order Details"
             android:layout_marginStart="5dp"
-            android:textColor="@color/sky_grey"
+            android:textColor="@color/blue"
             android:fontFamily="@font/roboto_regular"
+            android:onClick="@{() ->  itemClickListener.onClickItem(position,item,orderDetail)}"
             />
-        </RelativeLayout>
-
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="See Delivery Slot"
+                android:layout_marginEnd="7dp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/roboto_regular"
+                android:onClick="@{() ->  itemClickListener.onClickItem(position,item,deliverySlot)}"
+                />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
+</layout>

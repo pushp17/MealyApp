@@ -38,6 +38,8 @@ abstract class BaseFragment : Fragment() {
 
     fun showToast(msg: String) {
       Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
+
+
 //        val view: View ? = toast.view
 //
 ////Gets the actual oval background of the Toast then sets the colour filter
@@ -50,6 +52,9 @@ abstract class BaseFragment : Fragment() {
 ////Gets the TextView from the Toast so it can be editted
 //        val text = view.findViewById<TextView>(R.id.message)
 //        text.setTextColor(YOUR_TEXT_COLOUR)
+    }
+    fun showLongToast(msg: String) {
+        Toast.makeText(requireActivity(), msg, Toast.LENGTH_LONG).show()
     }
     abstract fun receivedResponse(item: Any?)
 }

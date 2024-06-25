@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/order_succes_icon"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        />
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:textColor="@color/black_text"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:singleLine="true"
+        android:text="Order Placed Succesfully"
+        />
+    <TextView
+        android:id="@+id/deliveryTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="2dp"
+        android:textAlignment="center"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:visibility="visible"
+        android:layout_gravity="center_horizontal"
+        android:text="Expected Delivery: 01:00 PM - 01:30PM"
+        />
+    <TextView
+        android:id="@+id/deliveryTimeDesc"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginHorizontal="5dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#797979"
+        android:visibility="visible"
+        android:text="Note: Expected Delivery time may vary a bit depending on the location and traffic."
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        >
+        <TextView
+            android:id="@+id/deliverySlot"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Delivert Slot"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="visible"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_coloured_corner"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            />
+        <TextView
+            android:id="@+id/tvGiveSuggestion"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Give Suggestions"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:background="@drawable/rounded_coloured_corner"
+            android:backgroundTint="@color/standard_green"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:id="@+id/tvGoToHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Home"
+        android:gravity="center"
+        android:textColor="@color/text_color"
+        android:textSize="14sp"
+        android:visibility="visible"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_coloured_corner"
+        android:layout_marginHorizontal="15dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        />
+</RelativeLayout>

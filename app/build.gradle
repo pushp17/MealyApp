@@ -14,8 +14,8 @@ android {
         applicationId "com.eat_healthy.tiffin"
         minSdk 24
         targetSdk 33
-        versionCode 12
-        versionName "2.6"
+        versionCode 18
+        versionName "2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +38,7 @@ android {
         dataBinding = true
     }
 }
-
+// signed key password mealy1709 and mealy17
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -92,6 +92,16 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     implementation 'com.android.installreferrer:installreferrer:2.2'
+
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+
+    def work_version = "2.7.1"
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    //Hilt with workManager
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+
 
 
 //    implementation 'com.razorpay:checkout:1.6.33'

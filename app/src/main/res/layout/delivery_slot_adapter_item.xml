@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDeliverySlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=" 10 AM - 02 PM          10 AM - 02 PM"
+        android:layout_toStartOf="@+id/ivClose"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:paddingVertical="8dp"
+        />
+</LinearLayout>

@@ -11,12 +11,12 @@ import com.eat_healthy.tiffin.adapter.CartItemListAdapter
 import com.eat_healthy.tiffin.databinding.CartItemsListBottomsheetBinding
 import com.eat_healthy.tiffin.genericFiles.ListItem
 import com.eat_healthy.tiffin.models.ItemsInCart
-import com.eat_healthy.tiffin.models.MainMeal
-import com.eat_healthy.tiffin.models.Sabji
+import com.eat_healthy.tiffin.models.Meal
 import com.eat_healthy.tiffin.utils.Constants
 import com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener
 import com.eat_healthy.tiffin.viewmodels.SharedViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,7 +25,10 @@ class CartListItemsBottomSheet: BottomSheetDialogFragment(),
     RecyclerviewItemClicklistener<ListItem> {
     @Inject
     lateinit var adapter: CartItemListAdapter
+    @Inject
+    lateinit var firebaseAnalytics: FirebaseAnalytics
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private var ifAnyItemRemoved = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +43,7 @@ class CartListItemsBottomSheet: BottomSheetDialogFragment(),
         binding.ivClose.setOnClickListener {
             callbackFromCartListItemsBottomSheet()
         }
+        firebaseAnalytics.logEvent(Constants.CART_BOTTOMSHEET_OPENED,null)
         return binding.root
     }
 
@@ -48,9 +52,12 @@ class CartListItemsBottomSheet: BottomSheetDialogFragment(),
         callbackFromCartListItemsBottomSheet()
     }
 
-    private fun callbackFromCartListItemsBottomSheet(){
+    private fun callbackFromCartListItemsBottomSheet() {
         requireParentFragment().childFragmentManager.fragments.forEach {
-            if (it is FoodSelectionFragment) {
+            if (it is HomeFragment) {
+                it.callbackFromCartBottomSheet(ifAnyItemRemoved)
+            }
+            if (it is OrderSummaryFragment) {
                 it.callbackFromCartListItemsBottomSheet()
             }
         }
@@ -60,26 +67,17 @@ class CartListItemsBottomSheet: BottomSheetDialogFragment(),
     override fun onClickItem(position: Int, item: ListItem?) {
         item?.let {
             if(item is ItemsInCart)  {
-                if (item.itemType.equals(Constants.normalMealCategory) || item.itemType.equals(
-                        Constants.silverMealCategory
-                    )
-                    || item.itemType.equals(Constants.goldMealCategory)
-                ) {
-                    sharedViewModel.specialMealCategoryHeaderEnable = false
-                    sharedViewModel.specialMealSelected=false
+                sharedViewModel.noOfItemAddedInCart -= 1
+                sharedViewModel.totalPrice -= (item.price).toInt()
+                sharedViewModel.adapterList.forEach {
+                    if (it is Meal && item.itemName.equals(it.name, true)) {
+                        it.addButtonCountText.set(it.addButtonCountText.get() - 1)
+                        ifAnyItemRemoved = true
+                    }
                 }
-                sharedViewModel.noOfItemAddedInCart = sharedViewModel.noOfItemAddedInCart-1
-                sharedViewModel.totalPrice = sharedViewModel.totalPrice - (item.price).toInt()
                 sharedViewModel.cartItemList.removeAt(position)
                 adapter.setItems(sharedViewModel.cartItemList)
                 if (sharedViewModel.noOfItemAddedInCart <= 0) {
-                    sharedViewModel.selectedMealCategoryMutableList.forEach {
-                        if (it is Sabji) {
-                            it.selected = false
-                        } else if (it is MainMeal) {
-                            it.selected = false
-                        }
-                    }
                     callbackFromCartListItemsBottomSheet()
                 }
             }

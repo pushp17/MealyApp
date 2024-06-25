@@ -9,7 +9,6 @@ import com.eat_healthy.tiffin.R
 import com.eat_healthy.tiffin.databinding.AdapterMealPeritemBinding
 import com.eat_healthy.tiffin.models.Sabji
 import com.eat_healthy.tiffin.utils.Constants
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils
 
 class SabjiViewHolder (val binding: AdapterMealPeritemBinding,val context: Context) : RecyclerView.ViewHolder(binding.root) {
     fun bind(position: Int,item: Sabji){

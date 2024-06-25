@@ -1,7 +1,6 @@
 package com.eat_healthy.tiffin.viewmodels
 
 import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,9 +11,9 @@ import com.eat_healthy.tiffin.genericFiles.ListItem
 import com.eat_healthy.tiffin.models.*
 import com.eat_healthy.tiffin.repository.MonthlyFoodSelectionRepository
 import com.eat_healthy.tiffin.utils.Constants
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils.getCurrentDate
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils.getDayOfTheWeek
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils.getNoOfDaysBetweenTwoDates
+import com.eat_healthy.tiffin.utils.DateAndTimeUtils.getCurrentDate
+import com.eat_healthy.tiffin.utils.DateAndTimeUtils.getDayOfTheWeek
+import com.eat_healthy.tiffin.utils.DateAndTimeUtils.getNoOfDaysBetweenTwoDates
 import com.eat_healthy.tiffin.utils.DataState
 import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -446,7 +445,7 @@ class MonthlyFoodSelectionViewModel @Inject constructor(
         if (screenEntryPoint?.equals(Constants.HOME_PAGE_TAB) == true) {
             firebaseAnalytics.logEvent(Constants.MONTHLY_FOOD_SELECTION_PAGE_FROM_HOME,null)
             if (sharedViewModel.userDetail?.isUserSignedIn == true) {
-                navigationController?.navigate(R.id.action_foodSelectionFragment_to_completeAddressFragment)
+//                navigationController?.navigate(R.id.action_foodSelectionFragment_to_completeAddressFragment)
             } else {
                 val bundle = bundleOf(Constants.SCREEN_ENTRY_POINT to screenEntryPoint)
                 navigationController?.navigate(R.id.action_foodSelectionFragment_to_loginFragment, bundle

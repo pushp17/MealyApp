@@ -66,4 +66,8 @@ constructor(context: Context)
         sharedPreferences.edit().clear().apply()
     }
 
+    fun clearASpecificPreference(key: String) {
+        sharedPreferences.edit().remove(key).apply()
+    }
+
 }

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:background="@drawable/oneside_corner"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/windowBackgroundNight"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -50,7 +50,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="Rajnikant pandey"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textStyle="bold"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvMobile"
@@ -60,7 +61,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="9113584599"
                 android:textColor="@color/black_text"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llIndicator"
@@ -85,7 +86,7 @@
                     android:text="@string/active_monthly_user"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                     />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -103,7 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="30dp"
-            app:cardBackgroundColor="#ecf9ef"
             app:cardCornerRadius="7dp">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -124,7 +124,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#f2f5fe"
             app:cardCornerRadius="7dp">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -143,7 +142,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#fcf0ff"
             app:cardCornerRadius="7dp"
             android:layout_marginBottom="5dp"
             >
@@ -160,7 +158,6 @@
 
                 />
         </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cvRenewSubcription"
             android:layout_width="match_parent"

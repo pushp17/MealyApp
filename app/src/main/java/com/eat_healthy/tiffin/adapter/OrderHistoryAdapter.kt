@@ -24,5 +24,6 @@ class OrderHistoryAdapter @Inject constructor() : BaseRecyclerviewAdapter() {
             position,
             mutableItemList.get(position) as SingleMealUserOrderHistory
         )
+        holder.binding.itemClickListener=itemClickListener
     }
 }

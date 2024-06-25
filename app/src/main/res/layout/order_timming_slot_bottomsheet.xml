@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+<androidx.appcompat.widget.AppCompatTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Order Timming :"
+    android:textColor="@color/blue"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:layout_margin="10dp"
+    />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLunchTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lunch 10 AM - 02 PM "
+        android:layout_toStartOf="@+id/ivClose"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        android:paddingVertical="4dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDinnerTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dinner 06 PM - 09 PM "
+        android:layout_toStartOf="@+id/ivClose"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        android:paddingVertical="8dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note* : Above order time slots could change sometimes."
+        android:textColor="@color/text_color"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginTop="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Delivery Time Slot :"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Order Slot"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/text_color"
+            android:textSize="13sp"
+            android:paddingVertical="8dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Delivery Slot"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/text_color"
+            android:textSize="13sp"
+            android:paddingVertical="8dp"
+            android:layout_marginStart="50dp"
+            />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:paddingHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/white"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+</LinearLayout>

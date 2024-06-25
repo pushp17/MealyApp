@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu for this week"
+        android:textColor="@color/black"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="bold"
+        />
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/tvCancelAllNotification"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="50dp"
+         android:layout_marginTop="30dp"
+         android:layout_marginBottom="7dp"
+         android:background="@drawable/rounded_coloured_corner"
+         android:backgroundTint="@color/windowBackgroundNight"
+         android:paddingHorizontal="10dp"
+         android:paddingVertical="6dp"
+         android:visibility="gone"
+         android:text="Cancel All Notifications."
+         android:textColor="@color/white"
+         android:textSize="12sp" />
+ </LinearLayout>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/llWeekdays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            tool:visibility="visible"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="30dp"
+                android:background="@drawable/green_color_fillled_rounded_corner"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="30dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="30dp"
+                android:text="Wed"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thurs"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="30dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="30dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="30dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:textColor="@color/black"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+</LinearLayout>
+</layout>

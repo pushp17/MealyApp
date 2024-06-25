@@ -8,5 +8,5 @@ import javax.inject.Inject
 class MealsDataSource
 @Inject
 constructor(val apiServices: ApiServices) : BaseDataSource() {
-    suspend fun getMealsApiResponse() = invoke { apiServices.getMealsApiResponse() }
+    suspend fun getMealsApiResponse(name:String?) = invoke { apiServices.getMealsResponseV2(name) }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.Meal" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        >
+        <RadioButton
+            android:id="@+id/item_radiobtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/greenNight"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Lauki Ki Sabji"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

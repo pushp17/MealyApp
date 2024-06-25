@@ -7,6 +7,8 @@
     <string name="title_monthly">Monthly</string>
     <string name="account">Account</string>
     <string name="special_meal">Special Meal</string>
+    <string name="today_menu">Today\'s Menu</string>
+    <string name="menu">Menu</string>
     <string name="regular_meal">Regular Meal</string>
     <string name="sabji">Sabji</string>
     <string name="dal">Dal</string>
@@ -68,4 +70,7 @@ To assist us in analyzing how our Service is used.
     <string name="active_monthly_user">Active Monthly User</string>
     <string name="subscription_expired">Subscription Expired</string>
     <string name="next_arrow">➔</string>
+    <string name="expected_delivery_time">"Expected Delivery Time: "</string>
+    <string name="see_timming">See timming</string>
+    <string name="feedback">Feedback</string>
 </resources>

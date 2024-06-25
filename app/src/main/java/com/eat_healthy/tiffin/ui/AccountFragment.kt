@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.eat_healthy.tiffin.R
 import com.eat_healthy.tiffin.databinding.FragmentAccountBinding
 import com.eat_healthy.tiffin.utils.Constants
-import com.eat_healthy.tiffin.utils.WaveView
 
 class AccountFragment : Fragment() {
 
@@ -51,10 +50,22 @@ class AccountFragment : Fragment() {
         binding.llContactUs.setOnClickListener {
             navigationController.navigate(R.id.action_navigation_account_to_contactUsFragment)
         }
+        binding.llSuggestion.setOnClickListener {
+            navigationController.navigate(R.id.action_navigation_account_to_userSuggestionFragment)
+        }
+
+        binding.llMonthly.setOnClickListener {
+            navigationController.navigate(R.id.action_navigation_account_to_monthlyFoodSelectionFragment)
+        }
+
         return root
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun requestPermission(){
+        //  READ and WRITE external storage permission runtime permission
     }
 }

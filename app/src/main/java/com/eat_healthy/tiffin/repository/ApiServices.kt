@@ -6,10 +6,16 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 interface ApiServices {
     @GET("/tiffin/homepage")
     suspend fun getMealsApiResponse(): Response<MealsApiRespone>
+
+    //"https://c47d6e09-cd65-45ac-aff4-bc4142274e39.mock.pstmn.io/mealyhomepage"
+    @GET("tiffin/homepageV2")
+    suspend fun getMealsResponseV2(@Query("username") user: String? = null): Response<MealsApiRespone>
 
     @GET("/tiffin/availableLocalityList")
     suspend fun getAvailableLocalityResponse(): Response<AvailableLocalityResponse>
@@ -38,6 +44,29 @@ interface ApiServices {
     @POST("/tiffin/singleUserOrdersHistory")
     suspend fun singleUserOrdersHistory(@Body user:User): Response<SingleMealUserOrderHistoryResponse>
 
-    @POST("/tiffin/todaysOrder")
-    suspend fun singleDeliveryDetailsResponse(@Body dateAndTime:String): Response<DeliveryDetailsResponse>
+    @POST("/tiffin/referalCode")
+    suspend fun singleReferalUserDataResponse(@Body user:User): Response<ReferalResponse>
+
+    @POST("/tiffin/userDetails")
+    suspend fun getUserDetails(@Body user:User): Response<UserDetailResponse>
+
+    @POST("/tiffin/refrerRefralHistory")
+    suspend fun refrerReferalHistoryResponse(@Body user:User): Response<RefrerReferalHistoryResponse>
+
+    @GET("/tiffin/userOrderList")
+    suspend fun getUserOrderList(): Response<List<String>>
+
+    @POST("/tiffin/foodReview")
+     suspend fun postFoodReview(@Body foodReview: FoodReview): Response<ApiResponse>
+
+  @GET("/tiffin/feedbackquestion")
+  suspend fun getsuggestionQuestions(): Response<UsersSuggestionQuestions>
+
+  @POST("/tiffin/postSuggestionQuestionsAnswers")
+  suspend fun postSuggestionQuestionAnswers(@Body usersSuggestionUpload: UsersSuggestionUpload): Response<ApiResponse>
+
+   // "/tiffin/weekelyMenu"
+    @GET("/tiffin/weekelyMenu")
+    suspend fun getWeekelyMenu(): Response<WeekelyMenuResponse>
+
 }

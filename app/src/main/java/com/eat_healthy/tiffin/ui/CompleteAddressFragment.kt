@@ -36,6 +36,12 @@ class CompleteAddressFragment:ListViewFragment<AddressAdapter,CompleteAddressFra
         super.onViewCreated(view, savedInstanceState)
         monthlyUser = sharedViewModel.monthlyUser
         isAccountEntryPoint = arguments?.getString(Constants.SCREEN_ENTRY_POINT)?.equals(Constants.ACCOUNT)
+        if (!sharedViewModel.apiResponse?.serviceArea.isNullOrEmpty()) {
+            binding.llOpenStatus.visibility = View.VISIBLE
+            binding.tvNotification.text = sharedViewModel.apiResponse?.serviceArea
+        } else {
+            binding.llOpenStatus.visibility = View.GONE
+        }
         if (isAccountEntryPoint == true) {
             binding.tvContinue.visibility = View.INVISIBLE
             binding.tvContinue.text = "Update Address"
@@ -50,7 +56,6 @@ class CompleteAddressFragment:ListViewFragment<AddressAdapter,CompleteAddressFra
         } else {
             setLayoutBasedOnUserType()
         }
-
         setflAddItem()
     }
 
@@ -205,6 +210,21 @@ class CompleteAddressFragment:ListViewFragment<AddressAdapter,CompleteAddressFra
                 )
             }
         }
+    }
+
+    private fun fakeClickListener(){
+        binding.tvContinue.visibility = View.VISIBLE
+        val bundle = bundleOf(
+            "address" to MUserAddress(
+                sharedViewModel.userDetail?.username,
+                sharedViewModel.userDetail?.mobileno,
+                mutableListOf()
+            )
+        )
+        navigationController?.navigate(
+            R.id.action_completeAddressFragment_to_orderSummaryFragment,
+            bundle
+        )
     }
 
     private fun setProccedClickListener() {

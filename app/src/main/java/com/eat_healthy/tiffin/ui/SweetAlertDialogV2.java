@@ -17,7 +17,11 @@ import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.eat_healthy.tiffin.R;
 import com.eat_healthy.tiffin.utils.ConstantsV2;
@@ -35,10 +39,14 @@ public class SweetAlertDialogV2 extends Dialog implements View.OnClickListener {
     private AnimationSet mSuccessLayoutAnimSet;
     private Animation mSuccessBowAnim;
     private TextView mTitleTextView;
+
+    private TextView mCongratulationText;
+    private LinearLayout mCongratulationLayout;
     private TextView mContentTextView;
 //    private FrameLayout mCustomViewContainer;
     private View mCustomView;
     private String mTitleText;
+    private String mCongratulationString;
     private String mContentText;
     private boolean mShowCancel;
     private boolean mShowContent;
@@ -174,6 +182,8 @@ public class SweetAlertDialogV2 extends Dialog implements View.OnClickListener {
         mCancelButton = (Button) findViewById(R.id.cancel_button);
         mCancelButton.setOnClickListener(this);
         mCancelButton.setOnTouchListener(ConstantsV2.FOCUS_TOUCH_LISTENER);
+        mCongratulationText = (TextView) findViewById(R.id.congratulation_text);
+        mCongratulationLayout = (LinearLayout) findViewById(R.id.ll_dicount_);
 //        mNeutralButton = (Button) findViewById(R.id.neutral_button);
 //        mNeutralButton.setOnClickListener(this);
 //        mNeutralButton.setOnTouchListener(ConstantsV2.FOCUS_TOUCH_LISTENER);
@@ -181,6 +191,7 @@ public class SweetAlertDialogV2 extends Dialog implements View.OnClickListener {
 
         setTitleText(mTitleText);
         setContentText(mContentText);
+        setCongratulationText(mCongratulationString);
         setCustomView(mCustomView);
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
@@ -277,6 +288,21 @@ public class SweetAlertDialogV2 extends Dialog implements View.OnClickListener {
         }
         return this;
     }
+    public String getCongratulationText() {
+        return mCongratulationString;
+    }
+    public SweetAlertDialogV2 setCongratulationText(String congratulationText) {
+        mCongratulationString = congratulationText;
+        if (mCongratulationLayout != null && congratulationText != null) {
+            if (congratulationText.isEmpty()) {
+                mCongratulationLayout.setVisibility(View.GONE);
+            } else {
+                mCongratulationLayout.setVisibility(View.VISIBLE);
+                mCongratulationText.setText(mCongratulationString);
+            }
+        }
+        return this;
+    }
 
     public SweetAlertDialogV2 setCustomImage(Drawable drawable) {
         mCustomImgDrawable = drawable;
@@ -294,6 +320,7 @@ public class SweetAlertDialogV2 extends Dialog implements View.OnClickListener {
     public String getContentText() {
         return mContentText;
     }
+
 
     public SweetAlertDialogV2 setContentText(String text) {
         mContentText = text;

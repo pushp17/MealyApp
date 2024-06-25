@@ -30,6 +30,32 @@
         <action
             android:id="@+id/action_navigation_home_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_referalFragment"
+            app:destination="@id/referalFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_walletFragment"
+            app:destination="@id/walletFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_mainCourseSelectionBottomSheet"
+            app:destination="@id/mainCourseSelectionBottomSheet" />
+        <action
+            android:id="@+id/action_navigation_home_to_cartListItemsBottomSheet"
+            app:destination="@id/cartListItemsBottomSheet" />
+        <action
+            android:id="@+id/action_navigation_home_to_foodRatinReviewBottomsheet"
+            app:destination="@id/foodRatinReviewBottomsheet" />
+        <action
+            android:id="@+id/action_navigation_home_to_completeAddressFragment"
+            app:destination="@id/completeAddressFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_home_to_orderTimmingSlotBottomSheet"
+            app:destination="@id/orderTimmingSlotBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/navigation_account"
@@ -66,6 +92,22 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             />
+        <action
+            android:id="@+id/action_navigation_account_to_orderSummaryFragment"
+            app:destination="@id/orderSummaryFragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_userSuggestionFragment"
+            app:destination="@id/userSuggestionFragment"
+            app:popUpTo="@+id/navigation_account"
+            app:popUpToInclusive="false"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_navigation_account_to_monthlyFoodSelectionFragment"
+            app:destination="@id/monthlyFoodSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentLocationMapFragment"
@@ -101,11 +143,18 @@
         android:label="OtpFragment" >
         <action
             android:id="@+id/action_otpFragment_to_completeAddressFragment"
+            app:popUpTo="@+id/otpFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/completeAddressFragment"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_otpFragment_to_referalFragment"
+            app:destination="@id/referalFragment"
+            app:popUpToInclusive="true"
             />
     </fragment>
     <fragment
@@ -120,22 +169,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             />
-        <action
-            android:id="@+id/action_foodSelectionFragment_to_completeAddressFragment"
-            app:destination="@id/completeAddressFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            />
-        <action
-            android:id="@+id/action_foodSelectionFragment_to_cartListItemsBottomSheet"
-            app:destination="@id/cartListItemsBottomSheet"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            />
+
     </fragment>
     <fragment
         android:id="@+id/completeAddressFragment"
@@ -165,6 +199,24 @@
         <action
             android:id="@+id/action_orderSummaryFragment_to_navigation_home"
             app:destination="@id/navigation_home"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_orderSummaryFragment_to_cartListItemsBottomSheet"
+            app:destination="@id/cartListItemsBottomSheet"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_orderSummaryFragment_to_orderSuccessFragment"
+            app:destination="@id/orderSuccessFragment"
+            app:popUpTo="@+id/completeAddressFragment"
+            app:popUpToInclusive="true"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
@@ -203,11 +255,20 @@
     <dialog
         android:id="@+id/cartListItemsBottomSheet"
         android:name="com.eat_healthy.tiffin.ui.CartListItemsBottomSheet"
-        android:label="CartListItemsBottomSheet" />
+        android:label="CartListItemsBottomSheet" >
+
+    </dialog>
     <fragment
         android:id="@+id/myOrderHisoryFragment"
         android:name="com.eat_healthy.tiffin.ui.MyOrderHisoryFragment"
-        android:label="MyOrderHisoryFragment" />
+        android:label="MyOrderHisoryFragment" >
+        <action
+            android:id="@+id/action_myOrderHisoryFragment_to_genericStringListBottomSheet"
+            app:destination="@id/genericStringListBottomSheet" />
+        <action
+            android:id="@+id/action_myOrderHisoryFragment_to_orderTimmingSlotBottomSheet"
+            app:destination="@id/orderTimmingSlotBottomSheet" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.eat_healthy.tiffin.ui.ProfileFragment"
@@ -233,4 +294,54 @@
         android:id="@+id/contactUsFragment"
         android:name="com.eat_healthy.tiffin.ui.ContactUsFragment"
         android:label="ContactUsFragment" />
+    <fragment
+        android:id="@+id/referalFragment"
+        android:name="com.eat_healthy.tiffin.ui.ReferalFragment"
+        android:label="ReferalFragment" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.eat_healthy.tiffin.ui.WalletFragment"
+        android:label="WalletFragment" />
+    <dialog
+        android:id="@+id/mainCourseSelectionBottomSheet"
+        android:name="com.eat_healthy.tiffin.ui.BaseCourseSelectionBottomSheet"
+        android:label="MainCourseSelectionBottomSheet" />
+    <dialog
+        android:id="@+id/foodRatinReviewBottomsheet"
+        android:name="com.eat_healthy.tiffin.ui.FoodRatinReviewBottomsheet"
+        android:label="FoodRatinReviewBottomsheet" />
+    <fragment
+        android:id="@+id/orderSuccessFragment"
+        android:name="com.eat_healthy.tiffin.ui.OrderSuccessFragment"
+        android:label="OrderSuccessFragment" >
+        <action
+            android:id="@+id/action_orderSuccessFragment_to_userSuggestionFragment"
+            app:destination="@id/userSuggestionFragment"
+            app:popUpTo="@+id/orderSuccessFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_orderSuccessFragment_to_orderTimmingSlotBottomSheet"
+            app:destination="@id/orderTimmingSlotBottomSheet" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSuggestionFragment"
+        android:name="com.eat_healthy.tiffin.ui.UserSuggestionFragment"
+        android:label="UserSuggestionFragment" />
+    <dialog
+        android:id="@+id/orderTimmingSlotBottomSheet"
+        android:name="com.eat_healthy.tiffin.ui.OrderTimmingSlotBottomSheet"
+        android:label="OrderTimmingSlotBottomSheet" />
+    <dialog
+        android:id="@+id/genericStringListBottomSheet"
+        android:name="com.eat_healthy.tiffin.ui.GenericStringListBottomSheet"
+        android:label="GenericStringListBottomSheet" />
+    <fragment
+        android:id="@+id/weekelyMenuFragment"
+        android:name="com.eat_healthy.tiffin.ui.WeekelyMenuFragment"
+        android:label="WeekelyMenuFragment" />
 </navigation>

@@ -24,13 +24,11 @@ class MainActivity : AppCompatActivity()  {
     var navView: BottomNavigationView?=null
     var navController: NavController?=null
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         installSplashScreen()
         super.onCreate(savedInstanceState)
         activityMainBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         navView = activityMainBinding.navView
-
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -50,6 +48,10 @@ class MainActivity : AppCompatActivity()  {
                 R.id.otpFragment -> navView?.visibility = View.GONE
                 R.id.orderSummaryFragment -> navView?.visibility = View.GONE
                 R.id.privacyAndTermsConditionFragment->navView?.visibility = View.GONE
+                R.id.referalFragment->navView?.visibility = View.GONE
+                R.id.walletFragment->navView?.visibility = View.GONE
+                R.id.orderSuccessFragment->navView?.visibility = View.GONE
+                R.id.userSuggestionFragment->navView?.visibility = View.GONE
                 else -> navView?.visibility = View.VISIBLE
             }
         }
@@ -66,6 +68,14 @@ class MainActivity : AppCompatActivity()  {
             if(it.isVisible)
                 it.visibility = View.GONE
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
 //    override fun onPaymentSuccess(p0: String?, p1: PaymentData?) {

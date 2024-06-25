@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.eat_healthy.tiffin.models.ExtrasV2" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="itemClickListener"
+            type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        >
+        <RadioButton
+            android:id="@+id/item_radiobtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/greenNight"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_toEndOf="@+id/item_radiobtn"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/roboto_regular"
+            tools:text="Lauki Ki Sabji"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/price"
+            style="@style/Sub_Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="7dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="15sp"
+            tools:text="Rs 85"
+            />
+    </RelativeLayout>
+</layout>

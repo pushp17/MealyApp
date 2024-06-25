@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+    <variable
+        name="item"
+        type="com.eat_healthy.tiffin.models.WeekelyMenu" />
+    <variable
+        name="position"
+        type="Integer" />
+    <variable
+        name="itemClickListener"
+        type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener" />
+    <variable
+        name="notifyLunch"
+        type="String" />
+    <variable
+        name="notifyDinner"
+        type="String" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_coloured_corner"
+    android:backgroundTint="@color/windowBackground"
+    android:layout_marginTop="20dp"
+    android:layout_marginHorizontal="5dp"
+    android:paddingVertical="10dp">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/itemImage"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="center_vertical"
+        app:shapeAppearanceOverlay="@style/roundedCorners" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/roboto_regular"
+        tool:text="Lauki Ki Sabji"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginEnd="3dp"
+            android:fontFamily="@font/roboto_light"
+            tool:text="+ Dal fry + Rice/Roti/Paratha + Salad "
+            android:textSize="15sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotifyLunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:backgroundTint="@color/standard_green"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="Notify me for lunch"
+                android:onClick="@{() ->  itemClickListener.onClickItem(position,item,notifyLunch)}"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotifyDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/rounded_coloured_corner"
+                android:backgroundTint="@color/windowBackgroundNight"
+                android:onClick="@{() ->  itemClickListener.onClickItem(position,item,notifyDinner)}"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="Notify me for dinner"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</layout>

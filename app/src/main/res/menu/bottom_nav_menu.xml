@@ -7,9 +7,9 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/monthlyFoodSelectionFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_monthly" />
+        android:id="@+id/weekelyMenuFragment"
+        android:icon="@drawable/menu"
+        android:title="@string/menu" />
 
     <item
         android:id="@+id/navigation_account"

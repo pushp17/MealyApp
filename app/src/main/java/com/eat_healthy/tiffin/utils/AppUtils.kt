@@ -65,4 +65,8 @@ object AppUtils {
         val formatedValue = value?.replace("\\n", System.lineSeparator());
         return formatedValue
     }
+
+    fun joinStringListWithComma(strings: List<String>): String {
+        return strings.joinToString(", ")
+    }
 }

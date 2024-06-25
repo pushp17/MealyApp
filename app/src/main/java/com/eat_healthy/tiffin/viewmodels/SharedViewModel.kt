@@ -1,14 +1,18 @@
 package com.eat_healthy.tiffin.viewmodels
 
 import android.app.Application
+import android.util.Log
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.*
-import com.eat_healthy.tiffin.R
 import com.eat_healthy.tiffin.genericFiles.ListItem
 import com.eat_healthy.tiffin.models.*
+import com.eat_healthy.tiffin.repository.LoginRepository
 import com.eat_healthy.tiffin.repository.MealsRepository
+import com.eat_healthy.tiffin.repository.ReferalRepository
 import com.eat_healthy.tiffin.utils.Constants
-import com.eat_healthy.tiffin.utils.DataAndTimeUtils
+import com.eat_healthy.tiffin.utils.DateAndTimeUtils
 import com.eat_healthy.tiffin.utils.DataState
+import com.eat_healthy.tiffin.utils.SharedPrefManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -17,85 +21,128 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel
-@Inject constructor(application: Application, private val mealsRepository: MealsRepository) :
+@Inject constructor(application: Application, private val mealsRepository: MealsRepository,
+                    val referalRepository: ReferalRepository,
+                    val loginRepository: LoginRepository
+                    ) :
     AndroidViewModel(application) {
-    private val viewModelContext=application
-    val selectedMealCategoryMutableList = mutableListOf<ListItem>()
-    val normalMealMutableList= mutableListOf<ListItem>()
+    val mealMutableList= mutableListOf<Meal>()
     val silverMealMutableList= mutableListOf<ListItem>()
-    val goldMealMutableList= mutableListOf<ListItem>()
+    val nonvegMealMutableList= mutableListOf<ListItem>()
+    val highlightedMutableList = mutableListOf<HomeHighLightedItems>()
+    val homepageMutableList = mutableListOf<ListItem>()
+    val extrasMutableList = mutableListOf<ExtrasV2>()
+    val adapterList = mutableListOf<ListItem>()
     var monthlyUserPreference:MonthlyUserPreference?=null
-    var enableLunchTime=false
-    var enableDinnerTime=false
-    var mealCategoryTabPosition=0
-    var monthlyUser:Boolean?=null
-    var userDetail:UserDetail?=null
-    var noOfItemAddedInCart=0
+    var enableLunchTime = false
+    var enableDinnerTime = false
+    var monthlyUser: Boolean? = null
+    var userDetail: UserDetail? = null
+    var noOfItemAddedInCart = 0
     val cartItemList by lazy { mutableListOf<ItemsInCart>()}
+    val deliverySlotTimming = mutableListOf<Header>()
     var totalPrice = 0
     var totalPriceForMonthlyUser=0
     var regularMealPrice="59"
     var vegSpecialPrice="79"
     var nonVegPrice="89"
-    var selectedPrice="59"
-    var noticeBoardShown=false
     var defaultNormalSabjiImageUrl:String?=null
     var defaultVegSpecialImageUrl:String?=null
     var defaultNonVegImageUrl:String?=null
     var showlandingpageAsRegister:Boolean?=false
-    var doesShowlandingpageAsRegisterValueUpdated=false
+    var foodReviewIsShown: Boolean = false
 
     var statusMsg: String? = null
-    var status2: String? = null
     var monthlySubscriptionMsg: String? = null
     var afterStartOrderTimeout: String? = null
     var aStartSingleMealStatusLunchTime: String? = null
     var afterStartSingleMealStatusDinnerTime: String? = null
-    var afterRegistrationStatusMsg: String? = null
-    var registerSuccessMsg: String? = null
     var isServiceStarted: Boolean? = false
     var lunchOrDinnerTime = Constants.TIME_OUT
     var subscriptionExpired = false
+    var deliveryPrice = "3"
 
-     var specialMealCategoryHeaderEnable=false
-     var todaysMealCategoryHeaderEnable=true
-
-    //special thali variables
-     var specialMealSelected:Boolean=false
-     var specialMealName:String?=null
-     var todaySpecialMealPrice:String?=null
-     var mealCategoryType:String?=null
-
-    //normal thali variables
-     var normalMealSelected:Boolean=false
-     var mainMealName:String?=null
      var sabji:String?=null
-     var dal:String?=null
-     var extras:String?=null
      var contact:String?=null
+    var referalApiCalled = false
+    var showStatusAtHomePage = false
+
+    var lunchStartTime = ""
+    var lunchEndTime = ""
+    var dinnerStartTime = ""
+    var dinnerEndTime = ""
 
     var apiResponse:MealsApiRespone?=null
+
+    private val _referalResponseLiveData =
+        MutableLiveData<DataState<ReferalResponse?>>()
+    val referalResponseLiveData: LiveData<DataState<ReferalResponse?>> =
+        _referalResponseLiveData
+
+    private val _userDetailsLiveData =
+        MutableLiveData<DataState<UserDetailResponse?>>()
+    val userDetailsLiveData: LiveData<DataState<UserDetailResponse?>> =
+        _userDetailsLiveData
+
+    private val _weekelyMenuLiveData =
+        MutableLiveData<DataState<WeekelyMenuResponse?>>()
+    val weekelyMenuLiveData: LiveData<DataState<WeekelyMenuResponse?>> =
+        _weekelyMenuLiveData
+
     private var mealsMutalbleLivedata: MutableLiveData<DataState<MealsApiRespone?>> = MutableLiveData()
     val mealsLivedata: LiveData<DataState<MealsApiRespone?>>
         get() = mealsMutalbleLivedata
+
+    var referalRewardMaxLimitPerUser = 0
+    var rewardPercentagePerOrder = 0.0
+
+    var lunchWorkManagerInitiated = false
+    var dinnerWorkManagerInitiated = false
+
+    var returnTheLatestPassedTime: Long? = null
+
+
    fun homePageData(){
-       if(apiResponse != null){
+       if (apiResponse != null) {
            mealsMutalbleLivedata.value = mealsLivedata.value
            return
        }
+
+       val name: String? = if (this.userDetail != null) {
+           userDetail?.username
+       } else {
+           "anonymous"
+       }
        viewModelScope.launch {
-           mealsRepository.getMealsData().onEach { dataState ->
+           mealsRepository.getMealsData(name).onEach { dataState ->
                mealsMutalbleLivedata.value = dataState
            }.launchIn(viewModelScope)
        }
     }
-    fun frameDataForHomePage(mealsApiRespone: MealsApiRespone) {
-        this.apiResponse=mealsApiRespone
-        normalMealMutableList.clear()
-        silverMealMutableList.clear()
-        goldMealMutableList.clear()
+
+    fun frameDataForHomePageV2(mealsApiRespone: MealsApiRespone) {
+        if (apiResponse != null) return
+        this.apiResponse = mealsApiRespone
+        mealMutableList.clear()
+        homepageMutableList.clear()
+        extrasMutableList.clear()
+        highlightedMutableList.clear()
+        deliverySlotTimming.clear()
+        adapterList.clear()
+        lunchStartTime = mealsApiRespone.lunchStartTime ?: ""
+        lunchEndTime = mealsApiRespone.lunchEndTime ?: ""
+        dinnerStartTime = mealsApiRespone.dinnerStartTime ?: ""
+        dinnerEndTime = mealsApiRespone.dinnerEndTime ?: ""
+        regularMealPrice = mealsApiRespone.regularMealPrice ?: "73"
+        vegSpecialPrice = mealsApiRespone.vegSpecialPrice ?: "92"
+        nonVegPrice = mealsApiRespone.nonVegPrice ?: "101"
+        deliveryPrice = mealsApiRespone.deliveryCharge ?: "3"
+        mealsApiRespone.deliveryTimeSlot?.forEach {
+            deliverySlotTimming.add(Header(it))
+        }
         apiResponse?.let {
-            when (DataAndTimeUtils.checkLunchOrDinnerTime(
+            showStatusAtHomePage = it.showStatus == true
+            when (DateAndTimeUtils.checkLunchOrDinnerTime(
                 it.lunchStartTime!!,
                 it.lunchEndTime!!,
                 it.dinnerStartTime!!,
@@ -111,6 +158,9 @@ class SharedViewModel
                     enableLunchTime = false
                     lunchOrDinnerTime = Constants.DINNER
                 }
+                Constants.LUNCH_TIMEOUT -> {
+                    lunchOrDinnerTime = Constants.LUNCH_TIMEOUT
+                }
                 else -> {
                     // Time out
                     lunchOrDinnerTime = Constants.TIME_OUT
@@ -118,219 +168,46 @@ class SharedViewModel
             }
         }
 
-        // This defaul image url is used to store default image of all category to use across the app
-        if(defaultNormalSabjiImageUrl == null){
-            run breaking@ {
-                mealsApiRespone.sabjiList?.forEach {
-                    when (it.itemType) {
-                        "normal" -> {
-                            defaultNormalSabjiImageUrl=it.itemImage
-                        }
-                        "silver" -> {
-                            if(defaultVegSpecialImageUrl != null)return@forEach
-                            defaultVegSpecialImageUrl=it.itemImage
-                        }
-                        "gold" -> {
-                            defaultNonVegImageUrl=it.itemImage
-                            return@breaking
-                        }
-                    }
-                }
-            }
-        }
-        // Normal Meal
-        normalMealMutableList.add(Header(viewModelContext.getString(R.string.special_meal)))
-        mealsApiRespone.specialMealList?.let {
-            normalMealMutableList.addAll(it.filter {
+        mealsApiRespone.mealList?.let {
+//            it.filter{ it.highlight }.forEachIndexed { index, curries ->
+//                highlightedMutableList.add(
+//                    HomeHighLightedItems(
+//                        curries.name,
+//                        curries.image,
+//                        curries.info,
+//                        curries.price,
+//                        curries.showOffPrice,
+//                        false,
+//                        curries.pagerPosition
+//                    )
+//                )
+//            }
+
+            mealMutableList.addAll(it.filter {
                 it.isLunchOrDinnerTime = lunchOrDinnerTime
-                it.itemType.equals("normal")
+                it.addButtonCountText = ObservableInt(0)
+                checAvailability(it)
             })
         }
-        normalMealMutableList.add(Header(viewModelContext.getString(R.string.sabji)))
-        mealsApiRespone.sabjiList?.let {
-            normalMealMutableList.addAll(it.filter {
-                it.isLunchOrDinnerTime = lunchOrDinnerTime
-                it.itemType.equals("normal")
-            })
-        //    defaultNormalSabjiImageUrl =(normalMealMutableList.getOrNull(1) as Sabji).itemImage
-        }
-        normalMealMutableList.add(Header(viewModelContext.getString(R.string.main_meal)))
-        mealsApiRespone.mainMealList?.let {
-            normalMealMutableList.addAll(it.filter {
-                it.isLunchOrDinnerTime = lunchOrDinnerTime
-                it.itemType.equals("dal") ||  it.itemType.equals("rice_roti") ||  it.itemType.equals("extras")
-            })
+//
+//        highlightedMutableList.sortBy {
+//            it.pagerPosition
+//        }
+
+        mealMutableList.sortBy {
+            it.position
         }
 
-        // Silver Meal
-        silverMealMutableList.add(Header(viewModelContext.getString(R.string.special_meal)))
-        mealsApiRespone.specialMealList?.let {
-            silverMealMutableList.addAll(it.filter {
-                it.itemType.equals("silver")
-            })
-        }
-        silverMealMutableList.add(Header(viewModelContext.getString(R.string.sabji)))
-        mealsApiRespone.sabjiList?.let {
-            silverMealMutableList.addAll(it.filter {
-                it.itemType.equals("silver")
-            })
-          //  defaultVegSpecialImageUrl =(silverMealMutableList.getOrNull(0) as Sabji).itemImage
+        mealsApiRespone.extrasV2?.let {
+            extrasMutableList.addAll(
+                it.map {
+                    it.isLunchOrDinnerTime = lunchOrDinnerTime
+                    it
+                })
         }
 
-        silverMealMutableList.add(Header(viewModelContext.getString(R.string.main_meal)))
-        mealsApiRespone.mainMealList?.let {
-            silverMealMutableList.addAll(it.filter {
-                it.itemType.equals("dal") ||  it.itemType.equals("rice_roti") ||  it.itemType.equals("extras")
-            })
-        }
-
-        // Gold Meal
-        goldMealMutableList.add(Header(viewModelContext.getString(R.string.special_meal)))
-        mealsApiRespone.specialMealList?.let {
-            goldMealMutableList.addAll(it.filter {
-                it.itemType.equals("gold")
-            })
-        }
-        goldMealMutableList.add(Header(viewModelContext.getString(R.string.sabji)))
-        mealsApiRespone.sabjiList?.let {
-            goldMealMutableList.addAll(it.filter {
-                it.itemType.equals("gold")
-            })
-          //  defaultNonVegImageUrl =(goldMealMutableList.getOrNull(0) as Sabji).itemImage
-        }
-        goldMealMutableList.add(Header(viewModelContext.getString(R.string.main_meal)))
-        mealsApiRespone.mainMealList?.let {
-            goldMealMutableList.addAll(it.filter {
-                it.itemType.equals("dal") ||  it.itemType.equals("rice_roti") ||
-                        it.itemType.equals("extras")
-            })
-        }
-    }
-
-    fun frameFoodForSelectedCategory(): List<ListItem> {
-        selectedMealCategoryMutableList.clear()
-        selectedMealCategoryMutableList.add(
-            MealCategoryHeader(
-                viewModelContext.getString(R.string.special_meal),
-                specialMealCategoryHeaderEnable
-            )
-        )
-        apiResponse?.specialMealList?.let { it ->
-            selectedMealCategoryMutableList.addAll(it.filter { specialMeal ->
-                when (mealCategoryTabPosition) {
-                    0 -> {
-                        if(specialMeal.itemType.equals(Constants.normalMealCategory)){
-                            specialMealName=specialMeal.itemName
-                            mealCategoryType=Constants.normalMealCategory
-                        }
-                        specialMeal.itemType.equals(Constants.normalMealCategory) && checAvailability(
-                            specialMeal
-                        )
-                    }
-                    1 -> {
-                        if(specialMeal.itemType.equals(Constants.silverMealCategory)){
-                            specialMealName=specialMeal.itemName
-                            mealCategoryType=Constants.silverMealCategory
-                        }
-                        specialMeal.itemType.equals(Constants.silverMealCategory) && checAvailability(
-                            specialMeal
-                        )
-                    }
-                    2 -> {
-                        if(specialMeal.itemType.equals(Constants.goldMealCategory)){
-                            specialMealName=specialMeal.itemName
-                            mealCategoryType=Constants.goldMealCategory
-                        }
-                        specialMeal.itemType.equals(Constants.goldMealCategory) && checAvailability(
-                            specialMeal
-                        )
-                    }
-                    else -> {
-                        specialMeal.itemType.equals(Constants.normalMealCategory) && checAvailability(
-                            specialMeal
-                        )
-                    }
-                }
-            })
-            if (selectedMealCategoryMutableList.size == 1) {
-                selectedMealCategoryMutableList.clear()
-            }
-        }
-        selectedMealCategoryMutableList.add(MealCategoryHeader(viewModelContext.getString(R.string.regular_meal),true))
-        apiResponse?.sabjiList?.let {
-            selectedMealCategoryMutableList.add(Header(viewModelContext.getString(R.string.sabji)))
-            selectedMealCategoryMutableList.addAll(it.filter { sabji ->
-                when (mealCategoryTabPosition) {
-                    0 -> {
-                        sabji.itemType.equals(Constants.normalMealCategory) && checAvailability(
-                            sabji
-                        )
-                    }
-                    1 -> {
-                        sabji.itemType.equals(Constants.silverMealCategory) && checAvailability(
-                            sabji
-                        )
-                    }
-                    2 -> {
-                        sabji.itemType.equals(Constants.goldMealCategory) && checAvailability(sabji)
-                    }
-                    else -> {
-                        sabji.itemType.equals(Constants.normalMealCategory) && checAvailability(
-                            sabji
-                        )
-                    }
-                }
-            })
-        }
-
-        apiResponse?.mainMealList?.let {
-            // Dal
-            val dalList = mutableListOf<ListItem>()
-            dalList.addAll(it.filter {
-                it.itemType.equals("dal") && checAvailability(it)
-            })
-            if (dalList.isNotEmpty()) {
-                selectedMealCategoryMutableList.add(Header(viewModelContext.getString(R.string.dal)))
-                selectedMealCategoryMutableList.addAll(dalList)
-            }
-
-            // Rice Roti
-            val riceRotiList = mutableListOf<ListItem>()
-            riceRotiList.addAll(it.filter {
-                it.itemType.equals("rice_roti") && checAvailability(it)
-            })
-            if (riceRotiList.isNotEmpty()) {
-                selectedMealCategoryMutableList.add(Header(viewModelContext.getString(R.string.rice_roti)))
-                selectedMealCategoryMutableList.addAll(riceRotiList)
-            }
-
-            // Extras
-            selectedMealCategoryMutableList.add(Header(viewModelContext.getString(R.string.extras)))
-            selectedMealCategoryMutableList.addAll(it.filter {
-                it.itemType.equals("extras") && checAvailability(it)
-            })
-        }
-        if (lunchOrDinnerTime.equals(Constants.TIME_OUT)) {
-            selectedMealCategoryMutableList.add(
-                Button(
-                    "",
-                    noOfItemAddedInCart,
-                    totalPrice.toString(),
-                    enable = false
-                )
-            )
-        } else {
-            selectedMealCategoryMutableList.add(
-                Button(
-                    "",
-                    noOfItemAddedInCart,
-                    totalPrice.toString(),
-                    enable = true
-                )
-            )
-        }
-
-        return selectedMealCategoryMutableList
+        adapterList.addAll(mealMutableList.filter {it.showAsSingleItem})
+        adapterList.add(Empty(""))
     }
 
     private fun checAvailability(item:ListItem):Boolean{
@@ -339,6 +216,10 @@ class SharedViewModel
                if (enableLunchTime) item.mealAvailability?.lunchToday ==true
                else item.mealAvailability?.dinnerToday == true
            }
+         is Meal->{
+             if (enableLunchTime) item.mealAvailability?.lunchToday ==true
+             else item.mealAvailability?.dinnerToday == true
+         }
            is Sabji->{
                if (enableLunchTime) item.mealAvailability?.lunchToday ==true
                else item.mealAvailability?.dinnerToday == true
@@ -350,12 +231,61 @@ class SharedViewModel
            else -> false
        }
     }
-    fun getSelectedMealTypeTabHeader():String{
-       return when(selectedPrice){
-            regularMealPrice-> "VEG- ₹".plus(regularMealPrice)
-            vegSpecialPrice-> "VEG- ₹".plus(vegSpecialPrice)
-            nonVegPrice-> "VEG- ₹".plus(nonVegPrice)
-           else -> "VEG- ₹".plus(regularMealPrice)
-       }
+
+    fun fetchReferalData(user: User, sharedPrefManager: SharedPrefManager) {
+        referalApiCalled = true
+        viewModelScope.launch {
+            referalRepository.singleReferalUserDataResponse(user).onEach { dataState ->
+                _referalResponseLiveData.value = dataState
+                if (dataState.statusCode == 200) {
+                    sharedPrefManager.addModelClass(
+                        Constants.REFERAL_USER_DATA,
+                        dataState.data?.mRefrer
+                    )
+                } else if (dataState.statusCode == 401) {
+                    referalApiCalled = true
+                }
+            }.launchIn(viewModelScope)
+        }
+    }
+
+    fun getUserDetails(user: User, sharedPrefManager: SharedPrefManager) {
+        viewModelScope.launch {
+            loginRepository.getUserDetails(user).onEach { dataState ->
+                _userDetailsLiveData.value = dataState
+                if (dataState.statusCode == 200) {
+                    userDetail = sharedPrefManager.getModelClass<UserDetail>(Constants.USER_INFO)
+                    userDetail?.referalMoney = dataState.data?.user?.referalMoney
+                    userDetail?.totalReferalMoneyReceived = dataState.data?.user?.totalReferalMoneyReceived
+                    sharedPrefManager.addModelClass(Constants.USER_INFO, userDetail)
+                }
+            }.launchIn(viewModelScope)
+        }
+    }
+
+    fun getWeekelyMenu() {
+        if (weekelyMenuLiveData.value is DataState.Success) {
+            _weekelyMenuLiveData.value = weekelyMenuLiveData.value
+            return
+        }
+        viewModelScope.launch {
+            loginRepository.getWeekelyMenu().onEach { dataState ->
+                _weekelyMenuLiveData.value = dataState
+            }.launchIn(viewModelScope)
+        }
+    }
+
+    fun getUserOrderHistoryDetails() {
+        viewModelScope.launch {
+            loginRepository.getUserOrderList().onEach { dataState ->
+                if (dataState.statusCode == 200) {
+                    dataState.data?.let {
+                        it.forEach { perUser->
+                            Log.d("OrderHistory",perUser)
+                        }
+                    }
+                }
+            }.launchIn(viewModelScope)
+        }
     }
 }

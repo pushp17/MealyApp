@@ -50,7 +50,7 @@ abstract class ListViewFragment<A : RecyclerView.Adapter<RecyclerView.ViewHolder
         binding.let {
             it.lifecycleOwner = this
         }
-        recyclerView?.adapter=adapter
+        recyclerView?.adapter = adapter
     }
     override fun onDestroyView() {
         super.onDestroyView()

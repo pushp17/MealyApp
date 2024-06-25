@@ -8,13 +8,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.eat_healthy.tiffin.adapter.ViewPagerFoodSelectionAdapter
 import com.eat_healthy.tiffin.databinding.FragmentFoodSelectionBinding
-import com.eat_healthy.tiffin.utils.Constants
 import com.eat_healthy.tiffin.viewmodels.SharedViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 class FoodSelectionFragment: BaseFragment() {
     lateinit var binding: FragmentFoodSelectionBinding
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private var viewPagerFoodSelectionAdapter: ViewPagerFoodSelectionAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,9 +24,11 @@ class FoodSelectionFragment: BaseFragment() {
         startViewPagerAdapter()
         return binding.root
     }
-    private fun startViewPagerAdapter(){
-        binding.viewpager.adapter= ViewPagerFoodSelectionAdapter(this)
-        val tabTitle= arrayListOf(sharedViewModel.getSelectedMealTypeTabHeader(),"Monthly User")
+
+    private fun startViewPagerAdapter() {
+        viewPagerFoodSelectionAdapter = ViewPagerFoodSelectionAdapter(this)
+        binding.viewpager.adapter= viewPagerFoodSelectionAdapter
+        val tabTitle= arrayListOf("Veg Meal","No-Veg Meal")
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()
@@ -42,11 +44,6 @@ class FoodSelectionFragment: BaseFragment() {
 
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == 1) {
-                    sharedViewModel.monthlyUser = true
-                    return
-                }
-                sharedViewModel.monthlyUser = false
             }
             override fun onPageScrollStateChanged(state: Int) {
                 super.onPageScrollStateChanged(state)
@@ -54,9 +51,6 @@ class FoodSelectionFragment: BaseFragment() {
         })
     }
 
-    fun callbackFromCartListItemsBottomSheet(){
-        startViewPagerAdapter()
-    }
     override fun receivedResponse(item: Any?) {
     }
 }

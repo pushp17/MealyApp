@@ -30,9 +30,9 @@ class MealFragment :ListViewFragment<MealAdapter,FragmentMealBinding>(){
         navigationController=findNavController()
         adapter.setOnClickListener(this)
         when(position){
-            0 -> adapter.setItems(sharedViewModel.normalMealMutableList)
+            0 -> adapter.setItems(sharedViewModel.mealMutableList)
             1->  adapter.setItems(sharedViewModel.silverMealMutableList)
-            2->  adapter.setItems(sharedViewModel.goldMealMutableList)
+            2->  adapter.setItems(sharedViewModel.nonvegMealMutableList)
         }
         gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {

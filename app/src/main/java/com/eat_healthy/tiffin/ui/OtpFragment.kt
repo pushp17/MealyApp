@@ -95,22 +95,6 @@ class OtpFragment : BaseFragment() {
                                     )
                                 }
                             }
-                            Constants.HOME_PAGE ->  {
-                                val alertDialog = SweetAlertDialogV2(
-                                    requireActivity(),
-                                    SweetAlertDialogV2.SUCCESS_TYPE
-                                )
-                                sharedPrefManager.addBooleanToPreference("registered",true)
-                                alertDialog.setCancelable(false)
-                                alertDialog.titleText = "Registered"
-                                alertDialog.contentText = "Thanks For Registering."
-                                alertDialog.show()
-                                alertDialog.setConfirmClickListener {
-                                    alertDialog.dismissWithAnimation()
-                                    navigationController?.popBackStack(R.id.navigation_home,false)
-
-                                }
-                            }
                             Constants.MONTHLY_USER_TAB -> {
                                 if (response.firstTimeUser == true) {
                                     navigationController.navigate(
@@ -123,6 +107,10 @@ class OtpFragment : BaseFragment() {
                             Constants.ACCOUNT -> {
                                 showToast("Logged In Successfully")
                                 navigationController.popBackStack(R.id.navigation_home, false)
+                            }
+                            Constants.REFER_EARN_FROM_HOME
+                            -> {
+                                navigationController.navigate(R.id.action_otpFragment_to_referalFragment)
                             }
                             else -> navigationController.popBackStack()
                         }

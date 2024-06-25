@@ -12,9 +12,6 @@ abstract class BaseRecyclerviewAdapter: RecyclerView.Adapter<RecyclerView.ViewHo
         mutableItemList.clear()
         mutableItemList.addAll(listItem)
         notifyDataSetChanged()
-//        if (attachedToRecyclerView) {
-//            notifyDataSetChanged()
-//        }
     }
 
     fun getItemsList():MutableList<ListItem>{

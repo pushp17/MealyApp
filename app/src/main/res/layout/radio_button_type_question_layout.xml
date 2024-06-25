@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:text="Please specify in detail " />
+        <RadioButton
+            android:id="@+id/radio_bad"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingVertical="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/greenNight"
+            android:text="Bad"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            android:textColor="@color/text_color"
+            android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+            />
+
+    <RadioButton
+        android:id="@+id/radio_average"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:buttonTint="@color/greenNight"
+        android:text="Average"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
+        android:textColor="@color/text_color"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        />
+
+    <RadioButton
+        android:id="@+id/radio_good"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_centerVertical="true"
+        android:buttonTint="@color/greenNight"
+        android:text="Good"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
+        android:textColor="@color/text_color"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/windowBackground"
+        android:layout_marginTop="10dp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

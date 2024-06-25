@@ -1,57 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:background="@color/windowBackground"
+    android:orientation="vertical">
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvHeading"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_centerVertical="true"
-        android:paddingStart="20dp"
         android:text="@string/app_name"
+        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:background="@color/colorPrimary"
         />
-<com.google.android.material.tabs.TabLayout
-    android:id="@+id/home_tab_layout"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    app:tabMode="fixed"
-    app:tabIndicatorColor="@color/white"
-    app:tabGravity="fill"
-    app:tabIndicatorHeight="3dp"
-    app:tabSelectedTextColor="@color/white"
-    app:tabTextColor="@color/lightgray"
-    />
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/windowBackground"
-    >
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/home_viewpager"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llOpenStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_87"
+            android:orientation="horizontal"
+            android:layout_below="@+id/toolbar"
+            android:paddingEnd="5dp"
+            android:paddingVertical="13dp"
+            android:visibility="gone"
+            tool:visibility="visible">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:visibility="visible"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@drawable/timer_1"
+                app:tint="@color/white"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginStart="10dp"
+                android:layout_marginVertical="3dp"
+                />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:visibility="visible"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:backgroundTint="@color/lightGreen">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="5dp"
+                    android:visibility="visible"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text="We will next open at 7PM today"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSeeTimming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="See timmings"
+                    android:layout_marginTop="3dp"
+                    android:visibility="visible"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/foodTopNavigationCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llOpenStatus"
+        android:visibility="gone"
+        android:paddingVertical="15dp"
+        tool:visibility="visible"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/oval_gray_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="All"
+            android:paddingHorizontal="20dp"
+             />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPureVeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/oval_gray_border"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black_text"
+            android:textSize="15sp"
+            android:text="Pure Veg"
+            android:paddingHorizontal="15dp"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVegEgg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/oval_gray_border"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black_text"
+            android:textSize="15sp"
+            android:text="Veg + Egg"
+            android:paddingHorizontal="15dp"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNonVeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/oval_gray_border"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black_text"
+            android:textSize="15sp"
+            android:text="Non Veg"
+            android:paddingHorizontal="15dp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/windowBackground"
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_above="@+id/rlCart"
+        android:layout_below="@+id/foodTopNavigationCategory"
+        android:layout_marginBottom="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/flAddItem"
-        android:layout_width="wrap_content"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/flCartItem"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="end|bottom"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/add" />
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/rlCart"
+        android:backgroundTint="@color/high_green"
+        android:text="23"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:icon="@drawable/shopping_cart"
+        app:layout_anchorGravity="bottom|right|end"
+        tool:visibility="visible"
+        />
+    <RelativeLayout
+        android:id="@+id/rlCart"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginVertical="7dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="10dp"
+        android:visibility="gone"
+        tool:visibility="visible">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvItemCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="2 ITEMS | 50 Rs" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llNext"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:visibility="visible"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                android:text="Continue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/next_arrow"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
 </RelativeLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<layout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    >-->
+<!--<androidx.appcompat.widget.LinearLayoutCompat-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="@color/windowBackground"-->
+<!--    tools:context=".ui.HomeFragment">-->
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvHeading"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="24sp"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        />-->
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/home_viewpager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/windowBackground"-->
+<!--        />-->
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tab_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:background="@color/windowBackground"-->
+<!--        app:tabBackground="@drawable/tab_pager_selector"-->
+<!--        app:tabGravity="center"-->
+<!--        app:tabIndicatorHeight="0dp"-->
+<!--        app:tabPaddingEnd="8dp"-->
+<!--        app:tabPaddingStart="8dp" />-->
+<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--        android:id="@+id/llWalletReferal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone"-->
+<!--        >-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/cvWallet"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:cardBackgroundColor="@color/button"-->
+<!--            app:cardCornerRadius="6dp"-->
+<!--            android:layout_marginHorizontal="15dp"-->
+<!--            android:layout_marginVertical="3dp"-->
+<!--            >-->
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:paddingHorizontal="30dp"-->
+<!--                android:paddingVertical="3dp"-->
+<!--                >-->
+<!--                <androidx.appcompat.widget.AppCompatImageView-->
+<!--                    android:layout_width="35dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    app:srcCompat="@drawable/wallet"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    />-->
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Wallet"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:fontFamily="@font/roboto_regular"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    />-->
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--        </androidx.cardview.widget.CardView>-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/cvReferAndEarn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:cardBackgroundColor="@color/button"-->
+<!--            app:cardCornerRadius="6dp"-->
+<!--            android:layout_marginHorizontal="15dp"-->
+<!--            android:layout_marginVertical="3dp"-->
+<!--            >-->
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingHorizontal="30dp"-->
+<!--                android:paddingVertical="3dp"-->
+<!--                android:orientation="vertical"-->
+<!--                >-->
+<!--                <androidx.appcompat.widget.AppCompatImageView-->
+<!--                    android:layout_width="35dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    app:srcCompat="@drawable/refer_icon"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    />-->
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Refer &amp; get ₹40"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:fontFamily="@font/roboto_regular"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    />-->
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--        </androidx.cardview.widget.CardView>-->
+<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--<RelativeLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/windowBackground"-->
+<!--    >-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_parent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="8dp"-->
+<!--        />-->
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/flAddItem"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:src="@drawable/add" />-->
+<!--</RelativeLayout>-->
+<!--</androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--</layout>-->

@@ -15,7 +15,12 @@
     <color name="colorPrimary_3">#164464</color>
     <color name="colorPrimary_1">#054040</color>
     <color name="colorPrimary">#DF4F4F</color>
+    <color name="colorPrimaryUltrLight">#fbeded</color>
     <color name="referalBackgroundColour"> #0098b2</color>
+    <color name="standard_green"> #1ca772</color>
+    <color name="standard_green_light"> #ddfbef</color>
+    <color name="ultra_standard_green_light"> #eefdf7</color>
+
 
     <color name="colorPrimary_4">#DF724F</color>
     <color name="light_blue_1">#e2f0f9</color>
@@ -116,6 +121,7 @@
     <color name="darkgray">#3F3F3F</color>
     <color name="almostwhite">#F5F5F5</color>
     <color name="button">#ff3071b8</color>
+    <color name="light_sky_blue">#3f6aae</color>
     <color name="cancel_button">#ff30a8b8</color>
     <color name="info_bg_color">#ffe4e2e2</color>
     <color name="info_text">#ff3071B8</color>
@@ -214,6 +220,7 @@
     <color name="trans_success_stroke_color">#33A5DC86</color>
     <color name="warning_stroke_color">#F8BB86</color>
     <color name="text_color">#575757</color>
+    <color name="text_gray">#7d7d7d</color>
     <color name="material_blue_grey_80">#ff37474f</color>
     <color name="material_blue_grey_90">#ff263238</color>
     <color name="material_blue_grey_95">#ff21272b</color>

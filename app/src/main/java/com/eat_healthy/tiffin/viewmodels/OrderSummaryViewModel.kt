@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.eat_healthy.tiffin.models.ApiResponse
 import com.eat_healthy.tiffin.models.MonthlyUserPreference
 import com.eat_healthy.tiffin.models.SingleMealUserOrderDetail
-import com.eat_healthy.tiffin.repository.ApiServices
 import com.eat_healthy.tiffin.repository.MonthlyFoodSelectionRepository
 import com.eat_healthy.tiffin.repository.SingleUserOrderRepository
 import com.eat_healthy.tiffin.utils.DataState
@@ -27,6 +26,7 @@ class OrderSummaryViewModel @Inject constructor(
     var nonVegCount=0
     var totalMealCount=0
     var grandTotal = 0.0
+    private var submitButtonAlreadyClicked = false
 
     private var _apiResponseLivedata: MutableLiveData<DataState<ApiResponse?>> = MutableLiveData()
     val apiResponseLivedata: LiveData<DataState<ApiResponse?>>
@@ -72,12 +72,17 @@ class OrderSummaryViewModel @Inject constructor(
     }
 
     fun singleUserOrderServices(singleMealUserOrderDetail: SingleMealUserOrderDetail){
-        viewModelScope.launch {
-            singleUserOrderRepository.singleUserOrder(singleMealUserOrderDetail).onEach { dataState ->
-                _apiResponseLivedata.value = dataState
-//               if(dataState.statusCode==200)
-//                   sessionSubmitMutalbleLivedata.value= DataState.Default
-            }.launchIn(viewModelScope)
+        if (!submitButtonAlreadyClicked) {
+            submitButtonAlreadyClicked = true
+            viewModelScope.launch {
+                singleUserOrderRepository.singleUserOrder(singleMealUserOrderDetail)
+                    .onEach { dataState ->
+                        _apiResponseLivedata.value = dataState
+                        if (dataState is DataState.Error<*>) {
+                            submitButtonAlreadyClicked = false
+                        }
+                    }.launchIn(viewModelScope)
+            }
         }
     }
 

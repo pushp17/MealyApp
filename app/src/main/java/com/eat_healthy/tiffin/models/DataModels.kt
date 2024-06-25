@@ -1,11 +1,11 @@
 package com.eat_healthy.tiffin.models
 
 import android.os.Parcelable
+import androidx.databinding.ObservableInt
 import com.eat_healthy.tiffin.genericFiles.ListItem
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import javax.sql.StatementEvent
 
 @Parcelize
 data class MealsApiRespone (
@@ -14,7 +14,7 @@ data class MealsApiRespone (
     val statusCode: Long,
     @SerializedName("statusMsg")
     @Expose
-    val statusMsg: String?,
+    val statusMsg: String ?,
     @SerializedName("statusMsg2")
     @Expose
     val statusMsg2: String?,
@@ -33,6 +33,12 @@ data class MealsApiRespone (
     @SerializedName("specialMealList")
     @Expose
     val specialMealList: List<SpecialMeal>?,
+    @SerializedName("mealList")
+    @Expose
+    val mealList: List<Meal>?,
+    @SerializedName("extrasV2")
+    @Expose
+    val extrasV2: List<ExtrasV2>?,
     @SerializedName("lunchStartTime")
     @Expose
     val  lunchStartTime:String?="",
@@ -60,6 +66,9 @@ data class MealsApiRespone (
     @SerializedName("playStoreLink")
     @Expose
     val playStoreLink: String? = "https://play.google.com/store/apps/details?id=com.application.zomato&hl=en_IN&gl=US",
+    @SerializedName("baseUrl")
+    @Expose
+    val baseUrl: String ?,
     @SerializedName("aStart_order_timeout")
     @Expose
     val afterStartOrderTimeout: String?,
@@ -81,6 +90,27 @@ data class MealsApiRespone (
     @SerializedName("contactNo")
     @Expose
     val contactNo: String?,
+    @SerializedName("referalRewardMaxLimitPerUser")
+    @Expose
+    val referalRewardMaxLimitPerUser: Int=0,
+    @SerializedName("rewardPercentagePerOrder")
+    @Expose
+    val rewardPercentagePerOrder: Double=0.0,
+    @SerializedName("statusMsgV2")
+    @Expose
+    val statusMsgV2: String?,
+    @SerializedName("showStatus")
+    @Expose
+    val showStatus: Boolean? = false,
+    @SerializedName("deliveryCharge")
+    @Expose
+    val deliveryCharge: String?,
+    @SerializedName("deliveryTimeSlot")
+    @Expose
+    val deliveryTimeSlot: List<String>?,
+    @SerializedName("serviceArea")
+    @Expose
+    val serviceArea: String?,
 ):ListItem, Parcelable
 
 @Parcelize
@@ -130,6 +160,9 @@ data class Sabji (
     @SerializedName("sabjiPrice")
     @Expose
     val itemPrice: String? = null,
+    @SerializedName("showOffPrice")
+    @Expose
+    val showOffPrice: String? = null,
     @SerializedName("sabjiImage")
     @Expose
     val itemImage: String?,
@@ -142,9 +175,100 @@ data class Sabji (
     @SerializedName("mealAvailability")
     @Expose
     val mealAvailability: MealAvailability? = null,
+    @SerializedName("highlight")
+    @Expose
+    val highlight: Boolean = false,
     var selected:Boolean=false,
     var isLunchOrDinnerTime:String
 ):ListItem, Parcelable
+
+
+@Parcelize
+data class Meal(
+    @SerializedName("name")
+    @Expose
+    val name: String? = null,
+    @SerializedName("type")
+    @Expose
+    val type: String? = null,
+    @SerializedName("category")
+    @Expose
+    val category: String? = null,
+    @SerializedName("price")
+    @Expose
+    val price: String? = null,
+    @SerializedName("showAsSingleItem")
+    @Expose
+    val showAsSingleItem: Boolean = false,
+    @SerializedName("image")
+    @Expose
+    val image: String? = null,
+    @SerializedName("info")
+    @Expose
+    val info: String? = null,
+    @SerializedName("mealAvailability")
+    @Expose
+    val mealAvailability: MealAvailability,
+    @SerializedName("showOffPrice")
+    @Expose
+    val showOffPrice: String? = null,
+    @SerializedName("highlight")
+    @Expose
+    val highlight: Boolean = false,
+    @SerializedName("pagerPosition")
+    @Expose
+    val pagerPosition: Int = -1,
+    @SerializedName("position")
+    @Expose
+    val position: Int = -1,
+    @SerializedName("non_veg")
+    @Expose
+    val nonVeg: Boolean? = false,
+    var selected: Boolean = false,
+    var isLunchOrDinnerTime:String,
+    var addButtonCountText: ObservableInt  = ObservableInt(0)
+) : ListItem, Parcelable
+
+@Parcelize
+data class ExtrasV2(
+    @SerializedName("id")
+    @Expose
+    val id: String?,
+    @SerializedName("name")
+    @Expose
+    val name: String?,
+    @SerializedName("type")
+    @Expose
+    val type: String?,
+    @SerializedName("price")
+    @Expose
+    val price: String? = null,
+    @SerializedName("showOffPrice")
+    @Expose
+    val showOffPrice: String? = null,
+    @SerializedName("image")
+    @Expose
+    val image: String?,
+    @SerializedName("info")
+    @Expose
+    val info: String? = null,
+    @SerializedName("rating")
+    @Expose
+    val rating: String? = null,
+    @SerializedName("quantity")
+    @Expose
+    val extraQuantity: Long?,
+    @SerializedName("mealAvailability")
+    @Expose
+    val extraAvailability: MealAvailability? = null,
+    @SerializedName("highlight")
+    @Expose
+    val highlight: Boolean = false,
+    var selected: Boolean = false,
+    var isLunchOrDinnerTime: String
+) : ListItem, Parcelable
+
+
 
 @Parcelize
 data class SpecialMeal (
@@ -160,6 +284,9 @@ data class SpecialMeal (
     @SerializedName("mealPrice")
     @Expose
     val itemPrice: String? = null,
+    @SerializedName("showOffPrice")
+    @Expose
+    val showOffPrice: String? = null,
     @SerializedName("mealImage")
     @Expose
     val itemImage: String?,
@@ -175,6 +302,15 @@ data class SpecialMeal (
     @SerializedName("mealAvailability")
     @Expose
     val mealAvailability: MealAvailability? = null,
+    @SerializedName("highlight")
+    @Expose
+    val highlight: Boolean = false,
+    @SerializedName("fullImage")
+    @Expose
+    val fullImage: Boolean = false,
+    @SerializedName("pagerPosition")
+    @Expose
+    val pagerPosition: Int = -1,
     var selected:Boolean=false,
     var isLunchOrDinnerTime:String
 ):ListItem, Parcelable
@@ -203,12 +339,20 @@ data class Header (
 ):ListItem, Parcelable
 
 @Parcelize
+data class StringText (
+    val item: String,
+):ListItem, Parcelable
+
+@Parcelize
 data class Button (
     val buttonText: String,
     var itemCount:Int=0,
     var itemPrice:String="",
     var enable: Boolean = true
 ):ListItem, Parcelable
+
+@Parcelize
+data class Empty(val empty: String) : ListItem, Parcelable
 
 @Parcelize
 data class SummarySelectedMeal (
@@ -305,10 +449,10 @@ data class ItemsInCart(
     @SerializedName("price")
     @Expose
     val price: String,
-    @SerializedName("itemType")
+    @SerializedName("item_name")
     @Expose
-    val itemType: String
-) : ListItem,Parcelable
+    val itemName: String? = ""
+) : ListItem, Parcelable
 
 @Parcelize
 data class UserWeeklyFoodPreference(
@@ -359,8 +503,8 @@ data class User(
     var username: String?,
     @SerializedName("mobileno")
     @Expose
-    var mobileno: String?,
-):Parcelable
+    var mobileno: String?
+) : Parcelable
 
 @Parcelize
 data class MonthlyUserPreferenceResponse(
@@ -418,7 +562,14 @@ data class UserDetail(
     var mobileno: String?,
     var isUserSignedIn:Boolean?,
     var monthlyUser:Boolean?,
-    var monthlySubscriptionMoney:Double
+    var monthlySubscriptionMoney:Double,
+    @SerializedName("referalMoney")
+    @Expose
+    var referalMoney: Double? = 0.0,
+    @SerializedName("totalReferalMoneyReceived")
+    @Expose
+    var totalReferalMoneyReceived: Double? = 0.0
+
 ):Parcelable
 
 @Parcelize
@@ -439,6 +590,16 @@ data class LoginResponse(
     @SerializedName("msg")
     @Expose
     val msg:String?
+):ListItem, Parcelable
+
+@Parcelize
+data class UserDetailResponse(
+    @SerializedName("code")
+    @Expose
+    val statusCode:Int,
+    @SerializedName("mUser")
+    @Expose
+    val user:UserDetail?
 ):ListItem, Parcelable
 
 @Parcelize
@@ -493,7 +654,33 @@ data class SingleMealUserOrderDetail(
     @SerializedName("lunchOrDinner")
     @Expose
     var lunchOrDinner: String?,
+    @SerializedName("refereePerOrderDetail")
+    @Expose
+    var refereePerOrderDetail: RefereePerOrderDetail?,
+    @SerializedName("orderRedemeedPrice")
+    @Expose
+    var orderRedemeedPrice: Double?,
+    @SerializedName("estimatedDeliveryTime")
+    @Expose
+    var estimatedDeliveryTime: String?=null,
+    @SerializedName("orderTime")
+    @Expose
+    var orderTime: String?=null
 ):Parcelable
+
+@Parcelize
+data class RefereePerOrderDetail(
+    @SerializedName("referalCode")
+    @Expose
+    val referalCode: String,
+    @SerializedName("referalCodeOrderCount")
+    @Expose
+    val referalCodeOrderCount: Int,
+    @SerializedName("refralAmountInThisOrder")
+    @Expose
+    val refralAmountInThisOrder: Double?,
+) : Parcelable
+
 
 @Parcelize
 data class SingleMealUserOrderHistoryResponse(
@@ -511,7 +698,9 @@ data class SingleMealUserOrderHistory(
     val dateAndTime: String,
     val subTotalPrice: Int,
     val grandTotalPrice: String,
-    val itemsInCart: List<ItemsInCart>
+    val itemsInCart: List<ItemsInCart>,
+    val orderTime:String?,
+    val estimatedDeliveryTime: String?
 ) : ListItem, Parcelable
 
 @Parcelize
@@ -539,6 +728,207 @@ data class DeliveryDetails(
     @SerializedName("singleMealUserOrderDetail")
     @Expose
     var singleMealUserOrderDetail: SingleMealUserOrderDetail? = null,
+) : ListItem, Parcelable
+
+@Parcelize
+data class ReferalResponse(
+    @SerializedName("statusCode")
+    @Expose
+    var statusCode: Int? = null,
+    @SerializedName("mRefrer")
+    @Expose
+    var mRefrer: MRefrer? = null,
+) : ListItem, Parcelable
+
+@Parcelize
+data class MRefrer(
+    @SerializedName("mobileno")
+    @Expose
+    var mobileno: String,
+    @SerializedName("username")
+    @Expose
+    var username: String,
+    @SerializedName("referalCode")
+    @Expose
+    var referalCode: String,
+    @SerializedName("isReferalCodeActive")
+    @Expose
+    var isReferalCodeActive: Boolean,
+    @SerializedName("referalCodecCreatedDate")
+    @Expose
+    var referalCodecCreatedDate: String,
+    @SerializedName("rewardAmount")
+    @Expose
+    var rewardAmount: Int,
+    @SerializedName("referalMsg")
+    @Expose
+    var referalMsg: String,
+    @SerializedName("referalSharedMsg")
+    @Expose
+    var referalSharedMsg: String,
+) : ListItem, Parcelable
+
+@Parcelize
+data class RefrerReferalHistoryResponse(
+    @SerializedName("code")
+    @Expose
+    var statusCode: Int,
+    @SerializedName("refrerRefralHistory")
+    @Expose
+    var refrerReferalHistory: RefrerReferalHistory,
+) : ListItem, Parcelable
+
+@Parcelize
+data class RefrerReferalHistory(
+    @SerializedName("refererMobileno")
+    @Expose
+    var refererMobileno: String?,
+    @SerializedName("referalCode")
+    @Expose
+    var refereeTotalAmount: String?,
+    @SerializedName("refrerRefreeHistoryList")
+    @Expose
+    var refereeOrdersDetails: List<RefereeOrdersDetails>,
+) : ListItem ,Parcelable
+
+@Parcelize
+data class RefereeOrdersDetails(
+    @SerializedName("refereeUserName")
+    @Expose
+    var refereeUserName: String?,
+    @SerializedName("refereeMobileNo")
+    @Expose
+    var refereeMobileNo: String?,
+    @SerializedName("referalCodeOrderCount")
+    @Expose
+    var referalCodeOrderCount: Int? = 0,
+    @SerializedName("refralAmountInThisOrder")
+    @Expose
+    var refralAmountInThisOrder: Double? = 0.0,
+    @SerializedName("dateAndTime")
+    @Expose
+    var dateAndTime: String?
+) : ListItem, Parcelable
+
+@Parcelize
+data class HomeHighLightedItems(
+    val itemName: String?,
+    val itemImage: String?,
+    val desc: String?,
+    val itemPrice: String?,
+    val showOffPrice: String?,
+    val fullImage:Boolean=false,
+    val pagerPosition:Int=-1
+) : ListItem, Parcelable
+
+data class FoodReview(
+    @SerializedName("foodReview")
+    @Expose
+    var foodReview: String,
+    @SerializedName("foodRating")
+    @Expose
+    var foodRating: String,
+    @SerializedName("foodOrderDate")
+    @Expose
+    val foodOrderDate: String,
+    @SerializedName("lunchOrDinner")
+    @Expose
+    val lunchOrDinner: String,
+    @SerializedName("foodReviewDate")
+    @Expose
+    var foodReviewDate: String,
+    @SerializedName("foodReviewUserName")
+    @Expose
+    val foodReviewUserName: String,
+    @SerializedName("foodOrderList")
+    @Expose
+    val foodOrderList: List<String>
+)
+
+@Parcelize
+data class UsersSuggestionUpload(
+    @SerializedName("userName")
+    @Expose
+    val userName: String?,
+    @SerializedName("mobileno")
+    @Expose
+    val mobileno: String?,
+    @SerializedName("listOfSuggestionQuestionAnswer")
+    @Expose
+    val listOfSuggestionQuestionAnswer: List<SuggestionQuestionAnswer>?,
+) : ListItem, Parcelable
+
+@Parcelize
+data class UsersSuggestionQuestions(
+    @SerializedName("code")
+    @Expose
+    val statusCode: Long,
+    @SerializedName("header")
+    @Expose
+    val header: String?,
+    @SerializedName("listOfSuggestionQuestionAnswer")
+    @Expose
+    val listOfSuggestionQuestionAnswer: List<SuggestionQuestionAnswer>?,
+) : ListItem, Parcelable
+
+@Parcelize
+data class SuggestionQuestionAnswer(
+    @SerializedName("question")
+    @Expose
+    val question: String,
+    @SerializedName("type")
+    @Expose
+    val type: String,
+    @SerializedName("answer")
+    @Expose
+    var answer: String?,
+    @SerializedName("position")
+    @Expose
+    var position: Int?=0,
+) : ListItem, Parcelable
+
+@Parcelize
+data class WeekelyMenuResponse(
+    @SerializedName("code")
+    @Expose
+    val code: Long,
+    @SerializedName("lunch_alarm_hour")
+    @Expose
+    val lunch_alarm_hour: Int ?,
+    @SerializedName("lunch_alarm_min")
+    @Expose
+    val lunch_alarm_min: Int ?,
+    @SerializedName("dinner_alarm_hour")
+    @Expose
+    val dinner_alarm_hour: Int ?,
+    @SerializedName("dinner_alarm_min")
+    @Expose
+    val dinner_alarm_min: Int ?,
+    @SerializedName("weekelyMenuList")
+    @Expose
+    var weekelyMenuList: List<WeekelyMenu>?,
+) : ListItem, Parcelable
+
+@Parcelize
+data class WeekelyMenu(
+    @SerializedName("item")
+    @Expose
+    val item: String,
+    @SerializedName("info")
+    @Expose
+    val desc: String,
+    @SerializedName("image")
+    @Expose
+    val image: String,
+    @SerializedName("day")
+    @Expose
+    var day: String?,
+
+) : ListItem, Parcelable
+
+@Parcelize
+data class UsersFoodReminder(
+    val savedMenuList: MutableList<WeekelyMenu>,
 ) : ListItem, Parcelable
 
 enum class Type(val value: String) {

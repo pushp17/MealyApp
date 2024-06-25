@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item"
-            type="com.eat_healthy.tiffin.models.Sabji" />
+            type="com.eat_healthy.tiffin.models.Meal" />
         <variable
             name="position"
             type="Integer" />
@@ -12,35 +12,25 @@
             name="itemClickListener"
             type="com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener"/>
     </data>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_marginHorizontal="10dp"
-    android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivItem"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/roundedCorners"
-       />
-
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/ivItem"
-        android:layout_toStartOf="@+id/item_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_marginEnd="15dp"
-        android:orientation="vertical">
-
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+        >
+        <RadioButton
+            android:id="@+id/item_radiobtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/greenNight"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}"
+            />
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvItemName"
             android:layout_width="wrap_content"
@@ -48,41 +38,8 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Lauki Ki Sabji"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tcShortDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvItemName"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@+id/ivItem"
-            android:textColor="@color/black_54"
-            android:textSize="12sp"
-            android:visibility="gone"
-            tools:text="@string/dummy_text" />
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/item_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:buttonTint="@color/greenNight"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:onClick="@{() ->  itemClickListener.onClickItem(position,item)}" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_toEndOf="@+id/ivItem"
-        android:background="@color/light_view_grey"
-        android:layout_below="@+id/ivItem"
-        android:layout_marginTop="30dp"
-        />
-</RelativeLayout>
 </layout>

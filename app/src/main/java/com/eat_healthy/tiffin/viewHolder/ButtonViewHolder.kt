@@ -11,7 +11,8 @@ class ButtonViewHolder (val binding: ButtonLayoutBinding) : RecyclerView.ViewHol
     fun bind(position:Int,item: Button){
         binding.position=position
         binding.item=item
-        if (item.enable != true) {
+        //item.enable != true
+        if (false) {
             binding.llAddInCart.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.colorPrimaryLight))
             binding.llNext.visibility = View.GONE
             binding.tvAddInCart.text="Today's Order Time is Over"

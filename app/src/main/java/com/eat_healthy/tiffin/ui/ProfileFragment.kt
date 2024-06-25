@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -22,6 +25,7 @@ class ProfileFragment: BaseFragment() {
     private val viewModel: MonthlyFoodSelectionViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
     var binding: ProfileLayoutBinding? = null
+    private var window: Window? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +33,8 @@ class ProfileFragment: BaseFragment() {
     ): View? {
         binding = ProfileLayoutBinding.inflate(inflater, container, false)
         val navigationController = findNavController()
+        window = activity?.window
+        window?.statusBarColor = ContextCompat.getColor(requireContext(),R.color.windowBackgroundNight)
         binding?.llMonthlyuser?.visibility = View.GONE
         if (sharedViewModel.userDetail != null) {
             binding?.tvUser?.text = sharedViewModel.userDetail?.username
@@ -61,10 +67,11 @@ class ProfileFragment: BaseFragment() {
                          tvSubscriptionStartDate.text = "Subcription Start Date : "+it.monthlyUserPreference?.subscriptionStartDate
                          tvSubscriptionEndDate.text = "Subcription End Date : "+it.monthlyUserPreference?.subscriptionEndDate
                          tvSubscriptionPrice.text = "Subcription Price : "+rsAppendedValue(it.monthlyUserPreference?.latestMonthlySubscriptionPrice)
-                         if(sharedViewModel.subscriptionExpired){
+                         if (sharedViewModel.subscriptionExpired) {
                              cvRenewSubcription.visibility = View.VISIBLE
                              tvMonthlyActiveUser.text = getString(R.string.subscription_expired)
-                             indicator.backgroundTintList = ColorStateList.valueOf(requireActivity().getColor(R.color.colorPrimary))
+                             indicator.backgroundTintList =
+                                 ColorStateList.valueOf(requireActivity().getColor(R.color.colorPrimary))
                          }
                      }
                  }
@@ -73,5 +80,11 @@ class ProfileFragment: BaseFragment() {
              }
          }
      }
+    }
+
+    override fun onPause() {
+        window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
+        super.onPause()
     }
 }
