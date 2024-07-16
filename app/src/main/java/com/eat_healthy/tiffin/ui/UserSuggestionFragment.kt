@@ -27,7 +27,6 @@ class UserSuggestionFragment :ListViewFragment<UserSuggestionAdapter,FragmentUse
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.rvParent.layoutManager = LinearLayoutManager(requireContext())
         super.onViewCreated(view, savedInstanceState)
-        super.onViewCreated(view, savedInstanceState)
         navigationController=findNavController()
         adapter.setOnClickListener(this)
         foodAndReviewSuggestionViewModel.usersSuggestionUploadResponseLiveData.observe(viewLifecycleOwner,observer)

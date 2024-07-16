@@ -42,4 +42,14 @@ class FoodReviewOrSuggestionRepository @Inject constructor(val apiServices: ApiS
                 else -> emit(DataState.Error(401, null, response.errorMsg))
             }
         }
+
+    suspend fun getFoodReviewResponse(): Flow<DataState<List<FoodReview>?>> =
+        flow {
+            emit(DataState.Loading)
+            val response = invoke { apiServices.getFoodReview() }
+            when (response.statusCode) {
+                200 -> emit(DataState.Success(response.data, response.statusCode))
+                else -> emit(DataState.Error(401, null, response.errorMsg))
+            }
+        }
 }

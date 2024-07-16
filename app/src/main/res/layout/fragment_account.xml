@@ -166,6 +166,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:paddingVertical="25dp"
+      android:visibility="gone"
       android:layout_marginStart="10dp">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"
@@ -195,6 +196,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:paddingVertical="25dp"
+      android:visibility="gone"
       android:layout_marginStart="10dp">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"
@@ -209,6 +211,52 @@
         android:layout_marginStart="10dp"
         />
   </androidx.appcompat.widget.LinearLayoutCompat>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/lightgray"
+      />
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/ll_user_review"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingVertical="25dp"
+      android:layout_marginStart="10dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/privacy"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="User Review"
+        android:layout_marginStart="10dp"
+        />
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:id="@+id/ll_delivery"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingVertical="25dp"
+      android:layout_marginStart="10dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/delivery"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Delivery"
+        android:layout_marginStart="10dp"
+        />
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
   <View
       android:layout_width="match_parent"
       android:layout_height="1dp"

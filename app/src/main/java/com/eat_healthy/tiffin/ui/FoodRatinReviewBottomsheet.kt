@@ -70,7 +70,7 @@ class FoodRatinReviewBottomsheet : BottomSheetDialogFragment() {
                 sharedPrefManager.clearASpecificPreference(Constants.FOOD_REVIEW)
                 viewLifecycleOwner.lifecycleScope.launch {
                     delay(2000L)
-                    firebaseAnalytics.logEvent(Constants.FOOD_REVIEW_SUBMITTED,null)
+             //       firebaseAnalytics.logEvent(Constants.FOOD_REVIEW_SUBMITTED,null)
                     binding?.progressBar?.visibility = View.GONE
                     Toast.makeText(requireContext(), "Thank you for providing Review", Toast.LENGTH_LONG).show()
                     dismiss()

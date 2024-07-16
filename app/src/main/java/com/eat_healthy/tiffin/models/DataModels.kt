@@ -843,7 +843,8 @@ data class FoodReview(
     @SerializedName("foodOrderList")
     @Expose
     val foodOrderList: List<String>
-)
+) :ListItem
+
 
 @Parcelize
 data class UsersSuggestionUpload(

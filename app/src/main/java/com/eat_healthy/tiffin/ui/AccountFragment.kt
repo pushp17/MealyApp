@@ -58,6 +58,15 @@ class AccountFragment : Fragment() {
             navigationController.navigate(R.id.action_navigation_account_to_monthlyFoodSelectionFragment)
         }
 
+        binding.llUserReview.setOnClickListener {
+            navigationController.navigate(R.id.action_navigation_account_to_userReviewFragment)
+        }
+
+        binding.llDelivery.setOnClickListener {
+            navigationController.navigate(R.id.action_navigation_account_to_deliveryFragment)
+        }
+
+
         return root
     }
     override fun onDestroyView() {

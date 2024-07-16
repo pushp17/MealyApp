@@ -108,6 +108,12 @@
         <action
             android:id="@+id/action_navigation_account_to_monthlyFoodSelectionFragment"
             app:destination="@id/monthlyFoodSelectionFragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_userReviewFragment"
+            app:destination="@id/userReviewFragment" />
+        <action
+            android:id="@+id/action_navigation_account_to_deliveryFragment"
+            app:destination="@id/deliveryFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentLocationMapFragment"
@@ -344,4 +350,12 @@
         android:id="@+id/weekelyMenuFragment"
         android:name="com.eat_healthy.tiffin.ui.WeekelyMenuFragment"
         android:label="WeekelyMenuFragment" />
+    <fragment
+        android:id="@+id/userReviewFragment"
+        android:name="com.eat_healthy.tiffin.ui.UserReviewFragment"
+        android:label="UserReviewFragment" />
+    <fragment
+        android:id="@+id/deliveryFragment"
+        android:name="com.eat_healthy.tiffin.ui.DeliveryFragment"
+        android:label="DeliveryFragment" />
 </navigation>

@@ -38,7 +38,10 @@ android {
         dataBinding = true
     }
 }
-// signed key password mealy1709 and mealy17
+//  key store password mealy1709
+//  key password mealy17
+// Key alias - key0
+//key path - /Users/rajnikantpandey/Documents/mealy_new_keay_store.jks
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'

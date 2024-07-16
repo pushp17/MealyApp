@@ -97,7 +97,7 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
         item?.let { response ->
             when (response) {
                 is MealsApiRespone -> {
-                    val baseUrl = response.baseUrl ?: "Constants.DEFAULT_BASE_URL"
+                    val baseUrl = response.baseUrl ?: Constants.DEFAULT_BASE_URL
                     sharedPrefManager.addStringToPreference(Constants.BASEURL, baseUrl)
                     Constants.BASEURL = baseUrl
                     sharedViewModel.frameDataForHomePageV2(response)

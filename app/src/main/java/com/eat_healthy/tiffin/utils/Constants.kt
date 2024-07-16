@@ -3,8 +3,9 @@ package com.eat_healthy.tiffin.utils
 object Constants   {
 
     var BASEURL="http://healthytiffinbackend1-env.eba-ymu8qgby.us-east-2.elasticbeanstalk.com"
-    // const val BASEURL="http://healthytiffinbackend1-env.eba-ymu8qgby.us-east-2.elasticbeanstalk.com"
     const val DEFAULT_BASE_URL = "http://healthytiffinbackend1-env.eba-ymu8qgby.us-east-2.elasticbeanstalk.com"
+  //  var BASEURL="http://10.0.2.2:9595"
+  //  var DEFAULT_BASE_URL = "http://10.0.2.2:9595"
     const val PLAYSTORE_LINK =
     "https://play.google.com/store/apps/details?id=com.eat_healthy.tiffin&pli=1"
    const val VIEW_HEADER = 0

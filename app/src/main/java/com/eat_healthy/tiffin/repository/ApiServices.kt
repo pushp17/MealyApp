@@ -69,4 +69,10 @@ interface ApiServices {
     @GET("/tiffin/weekelyMenu")
     suspend fun getWeekelyMenu(): Response<WeekelyMenuResponse>
 
+    @GET("/tiffin/getFoodReview")
+    suspend fun getFoodReview(): Response<List<FoodReview>>
+
+    @POST("/tiffin/todaysOrder")
+    suspend fun serviceforTodaysOrderList(@Body date:String): Response<DeliveryDetailsResponse>
+
 }
