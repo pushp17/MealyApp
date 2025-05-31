@@ -47,12 +47,6 @@ class AvailableLocationFragment: BaseFragment()  {
     var gpsLocalityMatched=false
     var gpsLocation:GpsLocation?=null
 
-    // We will UnComment this function when we will start taking current location
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        fetchCurrentLocation()
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -27,6 +27,10 @@ class OrderHistoryViewHolder (val binding: AdapterOrderHistoryBinding, val conte
         } else {
             binding.llEstimatedDeliveryTime.visibility = View.GONE
         }
-        binding.tvAmountPaid.text = rsAppendedValue(item.grandTotalPrice)
+        if (item.paymentSuccessDone == true) {
+            binding.tvAmountPaid.text = rsAppendedValue(item.grandTotalPrice)
+        } else {
+            binding.tvAmountPaid.text = rsAppendedValue(item.grandTotalPrice.plus("( COD )"))
+        }
     }
 }

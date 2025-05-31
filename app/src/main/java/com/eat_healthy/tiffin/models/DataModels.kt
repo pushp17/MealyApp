@@ -111,6 +111,9 @@ data class MealsApiRespone (
     @SerializedName("serviceArea")
     @Expose
     val serviceArea: String?,
+    @SerializedName("enableOffer")
+    @Expose
+    val enableOffer: Boolean?,
 ):ListItem, Parcelable
 
 @Parcelize
@@ -503,7 +506,7 @@ data class User(
     var username: String?,
     @SerializedName("mobileno")
     @Expose
-    var mobileno: String?
+    var mobileno: String?,
 ) : Parcelable
 
 @Parcelize
@@ -563,6 +566,9 @@ data class UserDetail(
     var isUserSignedIn:Boolean?,
     var monthlyUser:Boolean?,
     var monthlySubscriptionMoney:Double,
+    @SerializedName("hasOrdered")
+    @Expose
+    var hasOrdered: Boolean? = false,
     @SerializedName("referalMoney")
     @Expose
     var referalMoney: Double? = 0.0,
@@ -625,7 +631,7 @@ data class OtpVerification(
     val msg:String?,
     @SerializedName("firstTimeUser")
     @Expose
-    val firstTimeUser:Boolean?
+    val firstTimeUser: Boolean? = false
 ):Parcelable
 
 @Parcelize
@@ -633,6 +639,12 @@ data class SingleMealUserOrderDetail(
     @SerializedName("orderId")
     @Expose
     var orderId: String?,
+    @SerializedName("paymentId")
+    @Expose
+    var paymentId: String?,
+    @SerializedName("paymentSuccessDone")
+    @Expose
+    var paymentSuccessDone: Boolean?,
     @SerializedName("username")
     @Expose
     var username: String?,
@@ -700,7 +712,8 @@ data class SingleMealUserOrderHistory(
     val grandTotalPrice: String,
     val itemsInCart: List<ItemsInCart>,
     val orderTime:String?,
-    val estimatedDeliveryTime: String?
+    val estimatedDeliveryTime: String?,
+    val paymentSuccessDone: Boolean?
 ) : ListItem, Parcelable
 
 @Parcelize

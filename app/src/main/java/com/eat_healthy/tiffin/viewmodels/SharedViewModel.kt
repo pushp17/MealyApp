@@ -254,9 +254,10 @@ class SharedViewModel
             loginRepository.getUserDetails(user).onEach { dataState ->
                 _userDetailsLiveData.value = dataState
                 if (dataState.statusCode == 200) {
-                    userDetail = sharedPrefManager.getModelClass<UserDetail>(Constants.USER_INFO)
-                    userDetail?.referalMoney = dataState.data?.user?.referalMoney
-                    userDetail?.totalReferalMoneyReceived = dataState.data?.user?.totalReferalMoneyReceived
+//                    userDetail = sharedPrefManager.getModelClass<UserDetail>(Constants.USER_INFO)
+//                    userDetail?.referalMoney = dataState.data?.user?.referalMoney
+//                    userDetail?.totalReferalMoneyReceived = dataState.data?.user?.totalReferalMoneyReceived
+                    userDetail?.hasOrdered = dataState.data?.user?.hasOrdered
                     sharedPrefManager.addModelClass(Constants.USER_INFO, userDetail)
                 }
             }.launchIn(viewModelScope)

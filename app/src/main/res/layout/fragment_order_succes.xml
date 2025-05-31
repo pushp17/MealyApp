@@ -29,6 +29,18 @@
         android:text="Order Placed Succesfully"
         />
     <TextView
+        android:id="@+id/cod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:text="Cash On Delivery due to payment failure"
+        />
+    <TextView
         android:id="@+id/deliveryTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

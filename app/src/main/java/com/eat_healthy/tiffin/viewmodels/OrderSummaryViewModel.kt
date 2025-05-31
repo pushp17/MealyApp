@@ -26,7 +26,7 @@ class OrderSummaryViewModel @Inject constructor(
     var nonVegCount=0
     var totalMealCount=0
     var grandTotal = 0.0
-    private var submitButtonAlreadyClicked = false
+    var submitButtonAlreadyClicked = false
 
     private var _apiResponseLivedata: MutableLiveData<DataState<ApiResponse?>> = MutableLiveData()
     val apiResponseLivedata: LiveData<DataState<ApiResponse?>>
@@ -61,16 +61,6 @@ class OrderSummaryViewModel @Inject constructor(
         totalMealCount=vegCount+vegSpecialCount+nonVegCount
     }
 
-    fun monthlyUserOrderServices(monthlyUserPreference: MonthlyUserPreference){
-        viewModelScope.launch {
-            monthlyFoodSelectionRepository.monthlyUserOrderAndPreference(monthlyUserPreference).onEach { dataState ->
-                _apiResponseLivedata.value = dataState
-//               if(dataState.statusCode==200)
-//                   sessionSubmitMutalbleLivedata.value= DataState.Default
-            }.launchIn(viewModelScope)
-        }
-    }
-
     fun singleUserOrderServices(singleMealUserOrderDetail: SingleMealUserOrderDetail){
         if (!submitButtonAlreadyClicked) {
             submitButtonAlreadyClicked = true
@@ -83,6 +73,17 @@ class OrderSummaryViewModel @Inject constructor(
                         }
                     }.launchIn(viewModelScope)
             }
+        }
+    }
+
+
+    fun monthlyUserOrderServices(monthlyUserPreference: MonthlyUserPreference){
+        viewModelScope.launch {
+            monthlyFoodSelectionRepository.monthlyUserOrderAndPreference(monthlyUserPreference).onEach { dataState ->
+                _apiResponseLivedata.value = dataState
+//               if(dataState.statusCode==200)
+//                   sessionSubmitMutalbleLivedata.value= DataState.Default
+            }.launchIn(viewModelScope)
         }
     }
 

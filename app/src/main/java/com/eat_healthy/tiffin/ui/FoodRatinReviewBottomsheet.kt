@@ -42,13 +42,13 @@ class FoodRatinReviewBottomsheet : BottomSheetDialogFragment() {
             binding?.tvItem?.text = (userLastReview.foodOrderList.getOrNull(0))
             binding?.tvItem2?.visibility = View.VISIBLE
             binding?.tvItem2?.text = (userLastReview.foodOrderList.getOrNull(1))
-            if(userLastReview?.foodOrderList?.size!! > 2){
+            if(userLastReview.foodOrderList.size > 2){
                 binding?.tvItem2?.text = (userLastReview.foodOrderList.getOrNull(1).plus(" .....") )
             }
         }
-//        binding?.smileRating?.setSmileySelectedListener { type ->
-//            val rating = type.rating
-//        }
+        binding?.smileRating?.setSmileySelectedListener { type ->
+            val rating = type.rating
+        }
         binding?.ivClose?.setOnClickListener {
             firebaseAnalytics.logEvent(Constants.FOOD_REVIEW_BOTTOMSHEET_CANCELED,null)
             dismiss()

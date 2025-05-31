@@ -166,7 +166,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:paddingVertical="25dp"
-      android:visibility="gone"
+      android:visibility="visible"
       android:layout_marginStart="10dp">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"
@@ -222,6 +222,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:paddingVertical="25dp"
+      android:visibility="gone"
       android:layout_marginStart="10dp">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"
@@ -242,6 +243,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:paddingVertical="25dp"
+      android:visibility="gone"
       android:layout_marginStart="10dp">
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="25dp"

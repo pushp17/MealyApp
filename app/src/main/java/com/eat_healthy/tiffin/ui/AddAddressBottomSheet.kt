@@ -81,7 +81,6 @@ class AddAddressBottomSheet: BottomSheetDialogFragment() {
                     it.callbackFromAddressBottomSheet(userAddress)
                 }
             }
-           // ((reparentFragment?.parentFragment) as CompleteAddressFragment).callbackFromAddressBottomSheet(userAddress)
             dismiss()
         }
         return binding.root

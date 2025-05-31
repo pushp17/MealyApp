@@ -33,6 +33,11 @@ abstract class BaseFragment : Fragment() {
                 hideLoading()
                 receivedResponse(it.data)
             }
+            else ->{
+                showToast("Something went wrong , please try after some time")
+                hideLoading()
+                receivedResponse(it.data)
+            }
         }
     }
 

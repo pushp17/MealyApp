@@ -6,11 +6,9 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.eat_healthy.tiffin.R
-import com.eat_healthy.tiffin.adapter.AddressAdapter
 import com.eat_healthy.tiffin.adapter.OrderHistoryAdapter
 import com.eat_healthy.tiffin.databinding.FragmentOrderHistoryBinding
 import com.eat_healthy.tiffin.genericFiles.ListItem
-import com.eat_healthy.tiffin.models.Meal
 import com.eat_healthy.tiffin.models.SingleMealUserOrderDetail
 import com.eat_healthy.tiffin.models.SingleMealUserOrderHistory
 import com.eat_healthy.tiffin.models.SingleMealUserOrderHistoryResponse
@@ -51,8 +49,8 @@ class MyOrderHisoryFragment:ListViewFragment<OrderHistoryAdapter, FragmentOrderH
                             orderHistoryList.add(SingleMealUserOrderHistory(
                                 it.orderId ?: "", it.dateAndTime ?: "",
                                 it.subTotalPrice, it.grandTotalPrice.toString(), it.itemsInCart,
-                                it.orderTime,it.estimatedDeliveryTime
-
+                                it.orderTime,it.estimatedDeliveryTime,
+                                it.paymentSuccessDone
                             ))
                         }
                         adapter.setItems(orderHistoryList)

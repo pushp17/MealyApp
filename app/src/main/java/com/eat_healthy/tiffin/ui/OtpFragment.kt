@@ -74,7 +74,8 @@ class OtpFragment : BaseFragment() {
                         val screenEntryPoint = arguments?.getString(Constants.SCREEN_ENTRY_POINT)
                         user?.let {
                             sharedViewModel.userDetail=UserDetail(it.username,it.mobileno,
-                                true,sharedViewModel.monthlyUser,0.0)
+                                true,sharedViewModel.monthlyUser,0.0,
+                                hasOrdered = response.firstTimeUser != true)
                             sharedPrefManager.addModelClass(Constants.USER_INFO,sharedViewModel.userDetail)
                         }
                         val bundle= bundleOf("isFirstTimeUser" to response.firstTimeUser)

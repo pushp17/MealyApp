@@ -27,7 +27,7 @@ class AccountFragment : Fragment() {
         val navigationController=findNavController()
         val root: View = binding.root
         binding.llPrivacy.setOnClickListener {
-            val uri: Uri = Uri.parse("https://uday-mallikarjun.in/mealy/privacy-policy.html") // missing 'http://' will cause crashed
+            val uri: Uri = Uri.parse("https://www.notion.so/Privacy-Policy-for-Mealy-1d02b4e077ce808dba6ef109d449890b?pvs=4") // missing 'http://' will cause crashed
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         }

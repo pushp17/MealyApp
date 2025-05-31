@@ -47,7 +47,7 @@
                 android:layout_toEndOf="@+id/tvAmountPaidHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Rs 200"
+                tools:text="Rs 200 (COD)"
                 android:layout_below="@+id/orderDate"
                 android:textColor="@color/black"
                 android:textStyle="bold"

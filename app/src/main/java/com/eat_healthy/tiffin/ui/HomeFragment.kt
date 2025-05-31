@@ -2,13 +2,11 @@ package com.eat_healthy.tiffin.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.eat_healthy.tiffin.R
 import com.eat_healthy.tiffin.adapter.SelectMealAdapter
 import com.eat_healthy.tiffin.databinding.FragmentHomeBinding
 import com.eat_healthy.tiffin.genericFiles.ListItem
@@ -26,6 +24,19 @@ import com.eat_healthy.tiffin.utils.RecyclerviewItemClicklistener
 import com.eat_healthy.tiffin.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.TextView
+import com.airbnb.lottie.LottieAnimationView
+import com.eat_healthy.tiffin.R
+import com.eat_healthy.tiffin.models.User
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 @AndroidEntryPoint
 class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() ,
@@ -89,7 +100,17 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
                 }
             }
         })
+        if (sharedViewModel.userDetail?.isUserSignedIn == true && sharedViewModel.userDetail?.hasOrdered != true)
+        {
+            sharedViewModel.getUserDetails(
+                User(
+                    sharedViewModel.userDetail?.username,
+                    sharedViewModel.userDetail?.mobileno
+                ), sharedPrefManager
+            )
+        }
     }
+
 
 
 
@@ -114,7 +135,9 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
         ) {
             showAppUpdateDialog(Constants.PLAYSTORE_LINK)
         }
-        binding.foodTopNavigationCategory.visibility = View.VISIBLE
+        if (sharedViewModel.apiResponse?.enableOffer == true) {
+            binding.llWalletReferal.visibility = View.VISIBLE
+        }
         setStatus()
         adapter.setOnClickListener(this)
         adapter.setItems(sharedViewModel.adapterList)
@@ -138,10 +161,19 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
         binding.tvVegEgg.backgroundTintList = null
         binding.tvNonVeg.backgroundTintList = null
 
-        binding.tvAll.background = ContextCompat.getDrawable(requireContext(), R.drawable.oval_gray_border)
-        binding.tvPureVeg.background = ContextCompat.getDrawable(requireContext(), R.drawable.oval_gray_border)
-        binding.tvVegEgg.background = ContextCompat.getDrawable(requireContext(), R.drawable.oval_gray_border)
-        binding.tvNonVeg.background = ContextCompat.getDrawable(requireContext(), R.drawable.oval_gray_border)
+        binding.tvAll.background = ContextCompat.getDrawable(requireContext(), com.eat_healthy.tiffin.R.drawable.oval_gray_border)
+        binding.tvPureVeg.background = ContextCompat.getDrawable(
+            requireContext(),
+            com.eat_healthy.tiffin.R.drawable.oval_gray_border
+        )
+        binding.tvVegEgg.background = ContextCompat.getDrawable(
+            requireContext(),
+            com.eat_healthy.tiffin.R.drawable.oval_gray_border
+        )
+        binding.tvNonVeg.background = ContextCompat.getDrawable(
+            requireContext(),
+            com.eat_healthy.tiffin.R.drawable.oval_gray_border
+        )
 
 
         binding.tvAll.setTextColor(ContextCompat.getColor(requireContext(),R.color.black_text))
@@ -153,7 +185,7 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
                 binding.tvAll.backgroundTintList = ContextCompat.getColorStateList(requireActivity(), R.color.colorPrimary)
                 binding.tvAll.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
                 window?.statusBarColor = ContextCompat.getColor(requireContext(),R.color.colorPrimary)
-                binding.toolbar.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.colorPrimary))
+                binding.toolbar.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
                 adapter.setItems(sharedViewModel.adapterList)
             }
 
@@ -296,9 +328,6 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
     }
 
     private fun setStatus() {
-        binding.tvSeeTimming.setOnClickListener {
-            navigationController?.navigate(R.id.action_navigation_home_to_orderTimmingSlotBottomSheet)
-        }
         if (sharedViewModel.lunchOrDinnerTime == Constants.LUNCH_TIMEOUT && !sharedViewModel.showStatusAtHomePage) {
             binding.llOpenStatus.visibility = View.VISIBLE
             binding.tvStatus.text = sharedViewModel.apiResponse?.statusMsgV2
@@ -307,8 +336,6 @@ class HomeFragment : ListViewFragment<SelectMealAdapter, FragmentHomeBinding>() 
             binding.llOpenStatus.visibility = View.VISIBLE
         } else if (sharedViewModel.showStatusAtHomePage) {
             binding.llOpenStatus.visibility = View.VISIBLE
-            binding.tvSeeTimming.visibility = View.GONE
-            binding.ivNotification.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_notifications_black_24dp))
             binding.tvStatus.text =
                 getStringValueInNextLine(sharedViewModel.apiResponse?.statusMsgV2)
         }

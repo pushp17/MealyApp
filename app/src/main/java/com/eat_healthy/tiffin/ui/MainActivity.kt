@@ -8,28 +8,36 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.eat_healthy.tiffin.R
 import com.eat_healthy.tiffin.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.razorpay.Checkout
+import com.razorpay.PaymentData
+import com.razorpay.PaymentResultWithDataListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity()  {
+class MainActivity : AppCompatActivity() , PaymentResultWithDataListener {
     lateinit var activityMainBinding: ActivityMainBinding
     var navView: BottomNavigationView?=null
-    var navController: NavController?=null
+    //var navController: NavController?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         activityMainBinding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         navView = activityMainBinding.navView
-        navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        //navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -55,6 +63,7 @@ class MainActivity : AppCompatActivity()  {
                 else -> navView?.visibility = View.VISIBLE
             }
         }
+        Checkout.preload(applicationContext)
     }
 
     fun showLoading() {
@@ -78,15 +87,17 @@ class MainActivity : AppCompatActivity()  {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-//    override fun onPaymentSuccess(p0: String?, p1: PaymentData?) {
-//        Log.d("sxhsbxs","success")
-//        val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
-//        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).placeOrder(p1?.orderId)
-//    }
-//
-//    override fun onPaymentError(p0: Int, p1: String?, p2: PaymentData?) {
-//        Log.d("sxhsbxs","error")
-//    }
+    override fun onPaymentSuccess(paymentId: String?, paymentData: PaymentData?) {
+        val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
+        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,paymentId)
+       // (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).placeOrder(paymentData?.orderId,paymentId,true)
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?, paymentData: PaymentData?) {
+        val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
+        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,paymentData?.paymentId)
+       // (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).placeOrder(paymentData?.orderId,paymentData?.paymentId,false)
+    }
 
 //    override fun onResume() {
 //        super.onResume()

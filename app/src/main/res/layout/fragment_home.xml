@@ -7,52 +7,26 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:background="@color/windowBackground"
     android:orientation="vertical">
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="@string/app_name"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:background="@color/colorPrimary"
-        />
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llOpenStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_87"
-            android:orientation="horizontal"
-            android:layout_below="@+id/toolbar"
-            android:paddingEnd="5dp"
-            android:paddingVertical="13dp"
-            android:visibility="gone"
-            tool:visibility="visible">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivNotification"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:visibility="visible"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/timer_1"
-                app:tint="@color/white"
-                />
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:layout_marginStart="10dp"
-                android:layout_marginVertical="3dp"
-                />
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:id="@+id/llOpenStatus"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:visibility="visible"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center"
                 android:orientation="vertical"
-                android:backgroundTint="@color/lightGreen">
+                android:background="@color/colorPrimary">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="@string/app_name"
+                    android:fontFamily="@font/montserrat_alternates_medium"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@color/colorPrimary"
+                    />
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
@@ -60,30 +34,111 @@
                     android:clipToPadding="false"
                     android:orientation="horizontal"
                     android:textColor="@color/white"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="5dp"
                     android:visibility="visible"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:text="We will next open at 7PM today"
+                    android:textSize="18sp"
+                    android:text=""
+                    android:layout_marginBottom="8dp"
                     />
+            </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llWalletReferal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llOpenStatus"
+        android:visibility="gone"
+        tool:visibility="visible"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvWallet"
+            android:layout_width="0dp"
+            android:layout_weight="1.4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardCornerRadius="6dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="3dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                android:background="@color/blue"
+                >
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvSeeTimming"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:textColor="@color/white"
-                    android:text="See timmings"
-                    android:layout_marginTop="3dp"
-                    android:visibility="visible"
-                    android:fontFamily="@font/roboto_light"
-                    android:textSize="12sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_black"
+                    android:text="50% OFF "
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="For new users, upto 100rs "
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="13sp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_gravity="center_horizontal"
+                    />
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvReferAndEarn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardCornerRadius="6dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="3dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                android:orientation="vertical"
+                android:background="@color/blue"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_black"
+                    android:text="10% OFF"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On More than 1 orders"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="13sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/foodTopNavigationCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llOpenStatus"
+        android:layout_below="@+id/llWalletReferal"
         android:visibility="gone"
         android:paddingVertical="15dp"
         tool:visibility="visible"
@@ -296,6 +351,7 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:visibility="gone"-->
+<!--        tools:visibility="visible"-->
 <!--        >-->
 <!--        <androidx.cardview.widget.CardView-->
 <!--            android:id="@+id/cvWallet"-->

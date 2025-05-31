@@ -24,6 +24,7 @@ class OrderSuccessFragment : BaseFragment() {
         val binding = FragmentOrderSuccesBinding.inflate(inflater, container, false)
         val navigationController = findNavController()
         val estimatedDeliveryTime = arguments?.getString("estimatedDeliveryTime")
+        val isPaymentSuccessful = arguments?.getBoolean("isPaymentSuccessful")
         sharedViewModel.apiResponse = null
         val calendar: Calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, 240)
@@ -32,12 +33,19 @@ class OrderSuccessFragment : BaseFragment() {
             calendar.timeInMillis
         )
 
+        if (isPaymentSuccessful == true) {
+            binding.cod.visibility = View.GONE
+        }else {
+            binding.cod.visibility = View.VISIBLE
+        }
+
         binding.deliveryTime.text =
             getString(R.string.expected_delivery_time).plus(estimatedDeliveryTime)
 
         binding.tvGoToHome.setOnClickListener {
             navigationController.popBackStack(R.id.navigation_home, false)
         }
+
         binding.tvGiveSuggestion.setOnClickListener {
             navigationController.navigate(R.id.action_orderSuccessFragment_to_userSuggestionFragment)
             firebaseAnalytics.logEvent(Constants.FEEDBACK_BTN_CLICKED_FROM_SUCCESSS_PAGE,null)
