@@ -9,4 +9,6 @@ class MealsDataSource
 @Inject
 constructor(val apiServices: ApiServices) : BaseDataSource() {
     suspend fun getMealsApiResponse(name:String?) = invoke { apiServices.getMealsResponseV2(name) }
+
+    suspend fun updateOrderStatus(orderId:String) = invoke { apiServices.updateOrderStatus(orderId) }
 }

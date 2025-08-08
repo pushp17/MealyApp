@@ -22,6 +22,7 @@ import com.eat_healthy.tiffin.databinding.FragmentOrderSummaryBinding
 import com.eat_healthy.tiffin.models.ApiResponse
 import com.eat_healthy.tiffin.models.FoodReview
 import com.eat_healthy.tiffin.models.MUserAddress
+import com.eat_healthy.tiffin.models.OrderPlaceResponse
 import com.eat_healthy.tiffin.models.RefereePerOrderDetail
 import com.eat_healthy.tiffin.models.SingleMealUserOrderDetail
 import com.eat_healthy.tiffin.utils.AppUtils.rsAppendedValue
@@ -137,7 +138,6 @@ class OrderSummaryFragment:BaseFragment()  {
 //           }
        }
         binding.tvContinue.setOnClickListener {
-                startPayment(checkout,viewModel.grandTotal)
                 placeOrder(null,null,true)
         }
         return binding.root
@@ -166,11 +166,11 @@ class OrderSummaryFragment:BaseFragment()  {
 
         dialog.show()
     }
-     fun invokePlaceOrder(orderId: String?, paymentId:String?) {
+     fun invokePlaceOrder(orderId: String?, orderSuccess:Boolean) {
              CoroutineScope(Dispatchers.Main).launch {
+                 orderId?.let { sharedViewModel.updateOrderStatus(it) }
                  delay(300L)
                  if(orderSuccess) {
-                     //call the api here for sending success message
                      navigationController?.navigate(
                          R.id.action_orderSummaryFragment_to_orderSuccessFragment,
                          bundleOf(
@@ -179,9 +179,7 @@ class OrderSummaryFragment:BaseFragment()  {
                          )
                      )
                  } else {
-                     isPaymentSuccessful = true
                      viewModel.submitButtonAlreadyClicked = false
-                     placeOrder(orderId,paymentId , true)
                  }
              }
      }
@@ -219,8 +217,7 @@ class OrderSummaryFragment:BaseFragment()  {
 
     override fun receivedResponse(item: Any?) {
         item?.let {
-            if (item is ApiResponse) {
-                orderSuccess = true
+            if (item is OrderPlaceResponse) {
                 if (sharedViewModel.monthlyUser == true) {
                     sharedViewModel.subscriptionExpired = false
                     sharedViewModel.userDetail?.monthlySubscriptionMoney = viewModel.grandTotal
@@ -268,34 +265,20 @@ class OrderSummaryFragment:BaseFragment()  {
                     sharedViewModel.totalPrice = 0
                     sharedViewModel.totalPriceForMonthlyUser = 0
                     sharedViewModel.noOfItemAddedInCart = 0
-                    if (isPaymentSuccessful) {
-                        navigationController?.navigate(
-                            R.id.action_orderSummaryFragment_to_orderSuccessFragment,
-                            bundleOf(
-                                "estimatedDeliveryTime" to item.msg,
-                                "isPaymentSuccessful" to true
-                            )
-                        )
+                    if (item.orderId != null) {
+                        startPayment(viewModel.grandTotal, item.orderId)
+                    } else {
+                        showToast("Something went wrong plz try again")
                     }
                 }
             }
         }
     }
 
-    private fun startPayment(checkout: Checkout, amount:Double) {
+    private fun startPayment(amount:Double, orderId:String) {
         showLoading()
         try {
             CoroutineScope(Dispatchers.Main).launch {
-                val order_id = (Dispatchers.IO) {
-                    val razorpay =
-                        RazorpayClient("", "")
-                    val orderRequest = JSONObject()
-                    orderRequest.put("amount", amount*100) // amount in the smallest currency unit
-                    orderRequest.put("currency", "INR")
-                    orderRequest.put("receipt", "order_rcptid_11")
-                    val orderx = razorpay.orders.create(orderRequest)
-                    JSONObject(orderx.toString()).getString("id")
-                }
                 val options = JSONObject()
                 options.put("name", "Mealy")
                 options.put("description", "Food Charges")
@@ -303,7 +286,7 @@ class OrderSummaryFragment:BaseFragment()  {
                 options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg")
                 options.put("theme.color", "#DF4F4F")
                 options.put("currency", "INR")
-                options.put("order_id", order_id)
+                options.put("order_id", orderId)
                 options.put("amount", amount*100)
 
                 val retryObj = JSONObject();

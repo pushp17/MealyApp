@@ -19,4 +19,8 @@ class MealsRepository
                 else -> emit(DataState.Error(response.statusCode, null,response.errorMsg))
             }
         }
+
+    suspend fun updateOrderStatus(orderId: String) {
+        mealsDataSource.updateOrderStatus(orderId)
+    }
     }

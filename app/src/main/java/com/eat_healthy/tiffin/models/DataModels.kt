@@ -945,6 +945,20 @@ data class UsersFoodReminder(
     val savedMenuList: MutableList<WeekelyMenu>,
 ) : ListItem, Parcelable
 
+
+@Parcelize
+data class OrderPlaceResponse(
+    @SerializedName("code")
+    @Expose
+    val statusCode: Int,
+    @SerializedName("msg")
+    @Expose
+    val msg: String?,
+    @SerializedName("orderId")
+    @Expose
+    val orderId: String?
+) : ListItem, Parcelable
+
 enum class Type(val value: String) {
     Gold("gold"),
     Normal("normal"),

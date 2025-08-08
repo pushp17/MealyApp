@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eat_healthy.tiffin.models.ApiResponse
 import com.eat_healthy.tiffin.models.MonthlyUserPreference
+import com.eat_healthy.tiffin.models.OrderPlaceResponse
 import com.eat_healthy.tiffin.models.SingleMealUserOrderDetail
 import com.eat_healthy.tiffin.repository.MonthlyFoodSelectionRepository
 import com.eat_healthy.tiffin.repository.SingleUserOrderRepository
@@ -28,8 +29,8 @@ class OrderSummaryViewModel @Inject constructor(
     var grandTotal = 0.0
     var submitButtonAlreadyClicked = false
 
-    private var _apiResponseLivedata: MutableLiveData<DataState<ApiResponse?>> = MutableLiveData()
-    val apiResponseLivedata: LiveData<DataState<ApiResponse?>>
+    private var _apiResponseLivedata: MutableLiveData<DataState<OrderPlaceResponse?>> = MutableLiveData()
+    val apiResponseLivedata: LiveData<DataState<OrderPlaceResponse?>>
         get() = _apiResponseLivedata
 
     fun calulateMealCount(sharedViewModel:SharedViewModel){

@@ -289,4 +289,10 @@ class SharedViewModel
             }.launchIn(viewModelScope)
         }
     }
+
+    fun updateOrderStatus(orderId: String) {
+        viewModelScope.launch {
+            mealsRepository.updateOrderStatus(orderId)
+        }
+    }
 }

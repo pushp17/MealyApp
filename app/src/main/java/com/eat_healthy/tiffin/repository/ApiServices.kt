@@ -36,7 +36,7 @@ interface ApiServices {
     suspend fun updateMonthlyUserPreference(@Body monthlyUserPreference:MonthlyUserPreference): Response<ApiResponse>
 
     @POST("/tiffin/singleMealUserOrder")
-    suspend fun singleMealUserOrder(@Body singleMealUserOrderDetail:SingleMealUserOrderDetail): Response<ApiResponse>
+    suspend fun singleMealUserOrder(@Body singleMealUserOrderDetail:SingleMealUserOrderDetail): Response<OrderPlaceResponse>
 
     @POST("/tiffin/updateAddress")
     suspend fun updateUserAddress(@Body mUserAddress: MUserAddress): Response<ApiResponse>
@@ -74,4 +74,7 @@ interface ApiServices {
 
     @POST("/tiffin/todayOrder")
     suspend fun serviceforTodaysOrderList(@Body dateAndTime:String): Response<DeliveryDetailsResponse>
+
+    @POST("/tiffin/updateOrderStatus")
+    suspend fun updateOrderStatus(@Body orderId: String): Response<Unit>
 }

@@ -89,13 +89,13 @@ class MainActivity : AppCompatActivity() , PaymentResultWithDataListener {
 
     override fun onPaymentSuccess(paymentId: String?, paymentData: PaymentData?) {
         val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
-        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,paymentId)
+        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,true)
        // (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).placeOrder(paymentData?.orderId,paymentId,true)
     }
 
     override fun onPaymentError(p0: Int, p1: String?, paymentData: PaymentData?) {
         val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
-        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,paymentData?.paymentId)
+        (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).invokePlaceOrder(paymentData?.orderId,false)
        // (navHostFragment?.childFragmentManager?.fragments?.getOrNull(0) as OrderSummaryFragment).placeOrder(paymentData?.orderId,paymentData?.paymentId,false)
     }
 
